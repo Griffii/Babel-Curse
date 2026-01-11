@@ -1,0 +1,419 @@
+{
+  "worry": {
+    "en": "Worry",
+    "ja": "{rb}心配{/rb}{rt}しんぱい{/rt}する",
+    "pos": "verb",
+    "ja_expl": "{rb}物事{/rb}{rt}ものごと{/rt}がうまくいくかどうかを{rb}不安{/rb}{rt}ふあん{/rt}に{rb}思{/rb}{rt}おも{/rt}うこと。",
+    "examples": [
+      {
+        "en": "Don’t worry too much. Everything will be okay.",
+        "ja": "そんなに{rb}心配{/rb}{rt}しんぱい{/rt}しないで。きっとうまくいくよ。"
+      },
+      {
+        "en": "She worries about her little brother every day.",
+        "ja": "かのじょは毎日{rb}弟{/rb}{rt}おとうと{/rt}のことを{rb}心配{/rb}{rt}しんぱい{/rt}しています。"
+      }
+    ],
+    "image": "worry.png",
+    "audio": "worry.mp3"
+  },
+
+  "study": {
+    "en": "Study",
+    "ja": "{rb}勉強{/rb}{rt}べんきょう{/rt}する",
+    "pos": "verb",
+    "ja_expl": "{rb}知識{/rb}{rt}ちしき{/rt}や{rb}技術{/rb}{rt}ぎじゅつ{/rt}を{rb}学{/rb}{rt}まな{/rt}ぶために{rb}努力{/rb}{rt}どりょく{/rt}すること。",
+    "examples": [
+      {
+        "en": "I study English every night after dinner.",
+        "ja": "わたしは{rb}夕飯{/rb}{rt}ゆうはん{/rt}のあとに毎日{rb}勉強{/rb}{rt}べんきょう{/rt}します。"
+      },
+      {
+        "en": "They studied together at the library.",
+        "ja": "かれらは{rb}図書館{/rb}{rt}としょかん{/rt}でいっしょに{rb}勉強{/rb}{rt}べんきょう{/rt}しました。"
+      }
+    ],
+    "image": "study.png",
+    "audio": "study.mp3"
+  },
+
+  "probably": {
+    "en": "Probably",
+    "ja": "{rb}多分{/rb}{rt}たぶん{/rt}",
+    "pos": "adverb",
+    "ja_expl": "{rb}可能性{/rb}{rt}かのうせい{/rt}が{rb}高{/rb}{rt}たか{/rt}いことを{rb}示{/rb}{rt}しめ{/rt}す言い方。",
+    "examples": [
+      {
+        "en": "He will probably come to the party.",
+        "ja": "かれは{rb}多分{/rb}{rt}たぶん{/rt}パーティーに来るでしょう。"
+      },
+      {
+        "en": "It will probably rain tomorrow.",
+        "ja": "{rb}明日{/rb}{rt}あした{/rt}は{rb}多分{/rb}{rt}たぶん{/rt}{rb}雨{/rb}{rt}あめ{/rt}が{rb}降{/rb}{rt}ふ{/rt}るでしょう。"
+      }
+    ],
+    "image": "probably.png",
+    "audio": "probably.mp3"
+  },
+
+  "sometimes": {
+    "en": "Sometimes",
+    "ja": "{rb}時々{/rb}{rt}ときどき{/rt}",
+    "pos": "adverb",
+    "ja_expl": "{rb}一定{/rb}{rt}いってい{/rt}ではない{rb}頻度{/rb}{rt}ひんど{/rt}で{rb}起{/rb}{rt}お{/rt}こること。",
+    "examples": [
+      {
+        "en": "Sometimes I walk home from school.",
+        "ja": "{rb}時々{/rb}{rt}ときどき{/rt}わたしは{rb}学校{/rb}{rt}がっこう{/rt}から歩いて帰ります。"
+      },
+      {
+        "en": "He sometimes forgets his homework.",
+        "ja": "かれは{rb}時々{/rb}{rt}ときどき{/rt}{rb}宿題{/rb}{rt}しゅくだい{/rt}をわすれます。"
+      }
+    ],
+    "image": "sometimes.png",
+    "audio": "sometimes.mp3"
+  },
+
+  "shrine": {
+    "en": "Shrine",
+    "ja": "{rb}神社{/rb}{rt}じんじゃ{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}神様{/rb}{rt}かみさま{/rt}をまつる{rb}日本{/rb}{rt}にほん{/rt}の{rb}伝統的{/rb}{rt}でんとうてき{/rt}な{rb}建物{/rb}{rt}たてもの{/rt}。",
+    "examples": [
+      {
+        "en": "We visited a shrine on New Year’s Day.",
+        "ja": "{rb}元日{/rb}{rt}がんじつ{/rt}に{rb}神社{/rb}{rt}じんじゃ{/rt}をおとずれました。"
+      },
+      {
+        "en": "This shrine is famous for its big gate.",
+        "ja": "この{rb}神社{/rb}{rt}じんじゃ{/rt}は{rb}大{/rb}{rt}おお{/rt}きい{rb}鳥居{/rb}{rt}とりい{/rt}でゆうめいです。"
+      }
+    ],
+    "image": "shrine.png",
+    "audio": "shrine.mp3"
+  },
+
+  "priest": {
+    "en": "Priest",
+    "ja": "{rb}神主{/rb}{rt}かんぬし{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}神社{/rb}{rt}じんじゃ{/rt}で{rb}儀式{/rb}{rt}ぎしき{/rt}をおこなう人。",
+    "examples": [
+      {
+        "en": "The priest bowed and began the ceremony.",
+        "ja": "{rb}神主{/rb}{rt}かんぬし{/rt}はおじぎをして{rb}儀式{/rb}{rt}ぎしき{/rt}をはじめました。"
+      },
+      {
+        "en": "A priest blessed the visitors.",
+        "ja": "{rb}神主{/rb}{rt}かんぬし{/rt}が{rb}参拝者{/rb}{rt}さんぱいしゃ{/rt}にお{rb}祓{/rb}{rt}はら{/rt}いをしました。"
+      }
+    ],
+    "image": "priest.png",
+    "audio": "priest.mp3"
+  },
+
+  "pray": {
+    "en": "Pray",
+    "ja": "{rb}祈{/rb}{rt}いの{/rt}る",
+    "pos": "verb",
+    "ja_expl": "{rb}神様{/rb}{rt}かみさま{/rt}に{rb}願{/rb}{rt}ねが{/rt}いや{rb}感謝{/rb}{rt}かんしゃ{/rt}を{rb}伝{/rb}{rt}つた{/rt}えること。",
+    "examples": [
+      {
+        "en": "They pray for good luck at the shrine.",
+        "ja": "かれらは{rb}神社{/rb}{rt}じんじゃ{/rt}で{rb}幸運{/rb}{rt}こううん{/rt}を{rb}祈{/rb}{rt}いの{/rt}ります。"
+      },
+      {
+        "en": "I prayed for my family’s health.",
+        "ja": "わたしは{rb}家族{/rb}{rt}かぞく{/rt}の{rb}健康{/rb}{rt}けんこう{/rt}を{rb}祈{/rb}{rt}いの{/rt}りました。"
+      }
+    ],
+    "image": "pray.png",
+    "audio": "pray.mp3"
+  },
+
+  "choose": {
+    "en": "Choose",
+    "ja": "{rb}選{/rb}{rt}えら{/rt}ぶ",
+    "pos": "verb",
+    "ja_expl": "{rb}複数{/rb}{rt}ふくすう{/rt}の中からひとつを{rb}決{/rb}{rt}き{/rt}めること。",
+    "examples": [
+      {
+        "en": "Please choose your favorite color.",
+        "ja": "{rb}好{/rb}{rt}す{/rt}きな{rb}色{/rb}{rt}いろ{/rt}を{rb}選{/rb}{rt}えら{/rt}んでください。"
+      },
+      {
+        "en": "She chose a book to read.",
+        "ja": "かのじょは読む{rb}本{/rb}{rt}ほん{/rt}を{rb}選{/rb}{rt}えら{/rt}びました。"
+      }
+    ],
+    "image": "choose.png",
+    "audio": "choose.mp3"
+  },
+
+  "regular": {
+    "en": "Regular",
+    "ja": "{rb}普通{/rb}{rt}ふつう{/rt}の",
+    "pos": "adjective",
+    "ja_expl": "{rb}特別{/rb}{rt}とくべつ{/rt}ではなく、いつもと{rb}同{/rb}{rt}おな{/rt}じこと。",
+    "examples": [
+      {
+        "en": "I ordered a regular coffee.",
+        "ja": "わたしは{rb}普通{/rb}{rt}ふつう{/rt}のコーヒーをたのみました。"
+      },
+      {
+        "en": "She follows her regular daily routine.",
+        "ja": "かのじょはいつもの{rb}日課{/rb}{rt}にっか{/rt}を{rb}守{/rb}{rt}まも{/rt}っています。"
+      }
+    ],
+    "image": "regular.png",
+    "audio": "regular.mp3"
+  },
+
+  "exams": {
+    "en": "Exams",
+    "ja": "{rb}試験{/rb}{rt}しけん{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}学力{/rb}{rt}がくりょく{/rt}や{rb}理解度{/rb}{rt}りかいど{/rt}を{rb}確{/rb}{rt}たし{/rt}かめるためのテスト。",
+    "examples": [
+      {
+        "en": "Exams start next week.",
+        "ja": "{rb}試験{/rb}{rt}しけん{/rt}は来週から始まります。"
+      },
+      {
+        "en": "She studied hard for her exams.",
+        "ja": "かのじょは{rb}試験{/rb}{rt}しけん{/rt}のために{rb}一生懸命{/rb}{rt}いっしょうけんめい{/rt}{rb}勉強{/rb}{rt}べんきょう{/rt}しました。"
+      }
+    ],
+    "image": "exams.png",
+    "audio": "exams.mp3"
+  },
+
+  "school": {
+    "en": "School",
+    "ja": "{rb}学校{/rb}{rt}がっこう{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}学{/rb}{rt}まな{/rt}ぶために子どもや学生が{rb}通{/rb}{rt}かよ{/rt}う{rb}場所{/rb}{rt}ばしょ{/rt}。",
+    "examples": [
+      {
+        "en": "I go to school by train.",
+        "ja": "わたしは{rb}電車{/rb}{rt}でんしゃ{/rt}で{rb}学校{/rb}{rt}がっこう{/rt}へ行きます。"
+      },
+      {
+        "en": "Our school has a big library.",
+        "ja": "わたしたちの{rb}学校{/rb}{rt}がっこう{/rt}には大きな{rb}図書館{/rb}{rt}としょかん{/rt}があります。"
+      }
+    ],
+    "image": "school.png",
+    "audio": "school.mp3"
+  },
+
+  "job": {
+    "en": "Job",
+    "ja": "{rb}仕事{/rb}{rt}しごと{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}収入{/rb}{rt}しゅうにゅう{/rt}を{rb}得{/rb}{rt}え{/rt}るためにする{rb}活動{/rb}{rt}かつどう{/rt}。",
+    "examples": [
+      {
+        "en": "She got a new job last month.",
+        "ja": "かのじょは先月{rb}新{/rb}{rt}あたら{/rt}しい{rb}仕事{/rb}{rt}しごと{/rt}を{rb}始{/rb}{rt}はじ{/rt}めました。"
+      },
+      {
+        "en": "His job keeps him very busy.",
+        "ja": "かれは{rb}仕事{/rb}{rt}しごと{/rt}でとても{rb}忙{/rb}{rt}いそが{/rt}しいです。"
+      }
+    ],
+    "image": "job.png",
+    "audio": "job.mp3"
+  },
+
+  "yourself": {
+    "en": "Yourself",
+    "ja": "{rb}自分{/rb}{rt}じぶん{/rt}",
+    "pos": "pronoun",
+    "ja_expl": "あなた{rb}自身{/rb}{rt}じしん{/rt}を{rb}指{/rb}{rt}さ{/rt}す言葉。",
+    "examples": [
+      {
+        "en": "Be proud of yourself.",
+        "ja": "{rb}自分{/rb}{rt}じぶん{/rt}に{rb}誇{/rb}{rt}ほこ{/rt}りを{rb}持{/rb}{rt}も{/rt}ちなさい。"
+      },
+      {
+        "en": "Take care of yourself.",
+        "ja": "{rb}自分{/rb}{rt}じぶん{/rt}のことを大切にしてね。"
+      }
+    ],
+    "image": "yourself.png",
+    "audio": "yourself.mp3"
+  },
+
+  "mistakes": {
+    "en": "Mistakes",
+    "ja": "{rb}間違{/rb}{rt}まちが{/rt}い",
+    "pos": "noun",
+    "ja_expl": "{rb}正{/rb}{rt}ただ{/rt}しくない{rb}行動{/rb}{rt}こうどう{/rt}や{rb}判断{/rb}{rt}はんだん{/rt}。",
+    "examples": [
+      {
+        "en": "Everyone makes mistakes.",
+        "ja": "だれでも{rb}間違{/rb}{rt}まちが{/rt}いをします。"
+      },
+      {
+        "en": "I learned from my mistakes.",
+        "ja": "わたしは{rb}間違{/rb}{rt}まちが{/rt}いから{rb}学{/rb}{rt}まな{/rt}びました。"
+      }
+    ],
+    "image": "mistakes.png",
+    "audio": "mistakes.mp3"
+  },
+
+  "tough": {
+    "en": "Tough",
+    "ja": "{rb}大変{/rb}{rt}たいへん{/rt}な",
+    "pos": "adjective",
+    "ja_expl": "{rb}難{/rb}{rt}むずか{/rt}しくて、{rb}苦労{/rb}{rt}くろう{/rt}が多いこと。",
+    "examples": [
+      {
+        "en": "The exam was really tough.",
+        "ja": "その{rb}試験{/rb}{rt}しけん{/rt}はとても{rb}大変{/rb}{rt}たいへん{/rt}でした。"
+      },
+      {
+        "en": "It was tough, but we didn’t give up.",
+        "ja": "たいへんだったけど、わたしたちはあきらめませんでした。"
+      }
+    ],
+    "image": "tough.png",
+    "audio": "tough.mp3"
+  },
+
+  "culture": {
+    "en": "Culture",
+    "ja": "{rb}文化{/rb}{rt}ぶんか{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}国{/rb}{rt}くに{/rt}や{rb}地域{/rb}{rt}ちいき{/rt}の{rb}考{/rb}{rt}かんが{/rt}え方、{rb}習慣{/rb}{rt}しゅうかん{/rt}、{rb}芸術{/rb}{rt}げいじゅつ{/rt}など。",
+    "examples": [
+      {
+        "en": "I want to learn more about Japanese culture.",
+        "ja": "わたしは日本の{rb}文化{/rb}{rt}ぶんか{/rt}についてもっと知りたいです。"
+      },
+      {
+        "en": "Every country has its own culture.",
+        "ja": "どの{rb}国{/rb}{rt}くに{/rt}にもその{rb}国{/rb}{rt}くに{/rt}ならではの{rb}文化{/rb}{rt}ぶんか{/rt}があります。"
+      }
+    ],
+    "image": "culture.png",
+    "audio": "culture.mp3"
+  },
+
+  "extra": {
+    "en": "Extra",
+    "ja": "{rb}余分{/rb}{rt}よぶん{/rt}の",
+    "pos": "adjective",
+    "ja_expl": "{rb}必要{/rb}{rt}ひつよう{/rt}な{rb}量{/rb}{rt}りょう{/rt}よりも{rb}多{/rb}{rt}おお{/rt}いこと。",
+    "examples": [
+      {
+        "en": "I bought some extra snacks.",
+        "ja": "わたしは{rb}余分{/rb}{rt}よぶん{/rt}なおかしを少し買いました。"
+      },
+      {
+        "en": "We need extra time to finish.",
+        "ja": "わたしたちは終えるために{rb}余分{/rb}{rt}よぶん{/rt}な{rb}時間{/rb}{rt}じかん{/rt}がひつようです。"
+      }
+    ],
+    "image": "extra.png",
+    "audio": "extra.mp3"
+  },
+
+  "duties": {
+    "en": "Duties",
+    "ja": "{rb}義務{/rb}{rt}ぎむ{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}責任{/rb}{rt}せきにん{/rt}としてやらなければならないこと。",
+    "examples": [
+      {
+        "en": "He finished all his duties before going home.",
+        "ja": "かれは家に帰る前にすべての{rb}義務{/rb}{rt}ぎむ{/rt}を終えました。"
+      },
+      {
+        "en": "Duties can be tough but important.",
+        "ja": "{rb}義務{/rb}{rt}ぎむ{/rt}はたいへんでも大切です。"
+      }
+    ],
+    "image": "duties.png",
+    "audio": "duties.mp3"
+  },
+
+  "glad": {
+    "en": "Glad",
+    "ja": "{rb}嬉{/rb}{rt}うれ{/rt}しい",
+    "pos": "adjective",
+    "ja_expl": "{rb}喜{/rb}{rt}よろこ{/rt}びを{rb}感{/rb}{rt}かん{/rt}じること。",
+    "examples": [
+      {
+        "en": "I’m glad you came today.",
+        "ja": "今日は来てくれて{rb}嬉{/rb}{rt}うれ{/rt}しいです。"
+      },
+      {
+        "en": "She was glad to hear the good news.",
+        "ja": "かのじょはいい{rb}知らせ{/rb}{rt}しらせ{/rt}を聞いて{rb}嬉{/rb}{rt}うれ{/rt}しそうでした。"
+      }
+    ],
+    "image": "glad.png",
+    "audio": "glad.mp3"
+  },
+
+  "student council": {
+    "en": "Student Council",
+    "ja": "{rb}生徒会{/rb}{rt}せいとかい{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}学校{/rb}{rt}がっこう{/rt}の{rb}代表{/rb}{rt}だいひょう{/rt}として{rb}活動{/rb}{rt}かつどう{/rt}する学生グループ。",
+    "examples": [
+      {
+        "en": "She is the president of the student council.",
+        "ja": "かのじょは{rb}生徒会{/rb}{rt}せいとかい{/rt}の{rb}会長{/rb}{rt}かいちょう{/rt}です。"
+      },
+      {
+        "en": "The student council planned the school festival.",
+        "ja": "{rb}生徒会{/rb}{rt}せいとかい{/rt}が{rb}文化祭{/rb}{rt}ぶんかさい{/rt}を{rb}計画{/rb}{rt}けいかく{/rt}しました。"
+      }
+    ],
+    "image": "student_council.png",
+    "audio": "student_council.mp3"
+  },
+
+  "grades": {
+    "en": "Grades",
+    "ja": "{rb}成績{/rb}{rt}せいせき{/rt}",
+    "pos": "noun",
+    "ja_expl": "{rb}学習{/rb}{rt}がくしゅう{/rt}の{rb}結果{/rb}{rt}けっか{/rt}を{rb}示{/rb}{rt}しめ{/rt}すスコアや評価。",
+    "examples": [
+      {
+        "en": "His grades improved this semester.",
+        "ja": "かれの{rb}成績{/rb}{rt}せいせき{/rt}は今学期よくなりました。"
+      },
+      {
+        "en": "She studies hard to keep her grades up.",
+        "ja": "かのじょは{rb}成績{/rb}{rt}せいせき{/rt}を{rb}保{/rb}{rt}たも{/rt}つために{rb}努力{/rb}{rt}どりょく{/rt}しています。"
+      }
+    ],
+    "image": "grades.png",
+    "audio": "grades.mp3"
+  },
+
+  "supposed to": {
+    "en": "Supposed to",
+    "ja": "〜はず",
+    "pos": "phrase",
+    "ja_expl": "{rb}予定{/rb}{rt}よてい{/rt}や{rb}義務{/rb}{rt}ぎむ{/rt}として「〜することになっている」という意味。",
+    "examples": [
+      {
+        "en": "We’re supposed to meet at 3 p.m.",
+        "ja": "わたしたちは{rb}午後{/rb}{rt}ごご{/rt}3{rb}時{/rb}{rt}じ{/rt}に会う{rb}はず{/rb}{rt}はず{/rt}です。"
+      },
+      {
+        "en": "He was supposed to finish his homework.",
+        "ja": "かれは{rb}宿題{/rb}{rt}しゅくだい{/rt}を終える{rb}はず{/rb}{rt}はず{/rt}でした。"
+      }
+    ],
+    "image": "supposed_to.png",
+    "audio": "supposed_to.mp3"
+  }
+}
