@@ -1,4 +1,4 @@
-# Put this in game/dictionary_list.rpy (replace previous versions).
+
 
 screen dictionary_list():
 
