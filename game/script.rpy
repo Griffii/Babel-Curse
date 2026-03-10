@@ -1,5 +1,5 @@
 ﻿# ============================================
-# script.rpy — Test Script
+# script.rpy — Script
 # ============================================
 
 define config.window = "hide"

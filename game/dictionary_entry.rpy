@@ -10,6 +10,7 @@
 # - If no audio → disable play button and show AudioOff icon.
 # ============================================
 
+
 init -10 python:
 
     JP_FONT = "fonts/NotoSansJP/NotoSansJP-Bold.ttf"
@@ -86,6 +87,7 @@ init -1 python:
 
 
 init python:
+
     # ---------- Color Tokens ----------
     COL_BG_PANEL = "#14161aF0"
     COL_TEXT_MAIN = "#ffffff"
@@ -96,44 +98,61 @@ init python:
     COL_SECTION = "#3abaf5"
     COL_POS_TAGBG = "#3e2244"
 
+    # Drop shadow color
+    COL_TEXT_SHADOW = "#000000cc"
+
+    # Shadow definition
+    TEXT_SHADOW = [(3, COL_TEXT_SHADOW, 2, 2)]
+
     # ---------- Debug Layout Styles ----------
     style.dbg_vbox = Style(style.default)
     style.dbg_vbox.background = Null()
+
     style.dbg_hbox = Style(style.default)
     style.dbg_hbox.background = Null()
 
     # ---------- Text Styles ----------
+
     style.jp_text = Style(style.default)
     style.jp_text.font = JP_FONT
-    style.jp_text.size = 32
+    style.jp_text.size = 42
     style.jp_text.color = COL_TEXT_MAIN
     style.jp_text.line_spacing = 2
     style.jp_text.ruby_style = style.ruby_body
     style.jp_text.ruby_line_leading = 22
+    style.jp_text.outlines = TEXT_SHADOW
 
     style.jp_title = Style(style.default)
     style.jp_title.font = JP_FONT
-    style.jp_title.size = 56
+    style.jp_title.size = 80
     style.jp_title.color = COL_TITLE_JP
-    style.jp_title.outlines = [(2, COL_TITLE_OUT, 0, 0)]
+    style.jp_title.outlines = [
+        (2, COL_TITLE_OUT, 0, 0),
+        (1, COL_TEXT_SHADOW, 2, 2)
+    ]
     style.jp_title.ruby_style = style.ruby_title
     style.jp_title.ruby_line_leading = 30
 
     style.dictionary_section = Style(style.default)
     style.dictionary_section.font = JP_FONT
-    style.dictionary_section.size = 34
+    style.dictionary_section.size = 42
     style.dictionary_section.color = COL_SECTION
     style.dictionary_section.ruby_style = style.ruby_body
     style.dictionary_section.ruby_line_leading = 18
+    style.dictionary_section.outlines = TEXT_SHADOW
 
     style.dictionary_title_en = Style(style.default)
-    style.dictionary_title_en.size = 48
+    style.dictionary_title_en.size = 80
     style.dictionary_title_en.color = COL_TITLE_EN
-    style.dictionary_title_en.outlines = [(2, COL_TITLE_OUT, 0, 0)]
+    style.dictionary_title_en.outlines = [
+        (2, COL_TITLE_OUT, 0, 0),
+        (1, COL_TEXT_SHADOW, 2, 2)
+    ]
 
     style.dictionary_text_en = Style(style.default)
-    style.dictionary_text_en.size = 26
+    style.dictionary_text_en.size = 32
     style.dictionary_text_en.color = COL_TEXT_MUTED
+    style.dictionary_text_en.outlines = TEXT_SHADOW
 
     # POS label style
     style.dictionary_pos_text = Style(style.default)
@@ -145,18 +164,19 @@ init python:
     style.dictionary_pos_text.background = Frame(Solid(COL_POS_TAGBG), 8, 8)
     style.dictionary_pos_text.xpadding = 14
     style.dictionary_pos_text.ypadding = 8
+    style.dictionary_pos_text.outlines = TEXT_SHADOW
 
     # Panel frame (main container)
     style.dictionary_frame = Style(style.default)
-    style.dictionary_frame.background = Frame("gui/dictionary/Box_Square.png")
-    style.dictionary_frame.xpadding = 80
+    style.dictionary_frame.background = Frame("gui/dictionary/Box_Square.png", 32, 32)
+    style.dictionary_frame.xpadding = 40
     style.dictionary_frame.ypadding = 80
 
     # Image frame
     style.dictionary_image_frame = Style(style.default)
-    style.dictionary_image_frame.background = Frame("gui/dictionary/Box_Blank_Square.png")
-    style.dictionary_image_frame.xpadding = 10
-    style.dictionary_image_frame.ypadding = 10
+    style.dictionary_image_frame.background = Frame("gui/dictionary/button_square_line_white.png", 32, 32)
+    style.dictionary_image_frame.xpadding = 20
+    style.dictionary_image_frame.ypadding = 20
 
 
 # ---------- Hover Zoom (buttons only) ----------
@@ -167,6 +187,7 @@ transform btn_zoom:
     on idle:
         ease 0.12 zoom 1.0
 
+
 # ---------- Popup Animations ----------
 transform dictionary_popup_swipe_in:
     alpha 0.0
@@ -174,14 +195,13 @@ transform dictionary_popup_swipe_in:
     easeout_quart 0.3 alpha 1.0 yoffset 0
 
 
-
 # ---------- Popup Screen ----------
 screen dictionary_popup(entry):
+
     tag dictionary_popup
     modal True
     zorder 200
 
-    # Scrim (click background to close instantly)
     button:
         background Solid("#0008")
         xfill True
@@ -189,7 +209,6 @@ screen dictionary_popup(entry):
         action [Stop("voice"), Hide("dictionary_popup")]
         focus_mask True
 
-    # Main Panel
     frame:
         style "dictionary_frame"
         at dictionary_popup_swipe_in
@@ -198,7 +217,6 @@ screen dictionary_popup(entry):
         xmaximum 0.92
         ymaximum 0.88
 
-        # --- Close Button (slide-down close animation) ---
         imagebutton:
             idle "gui/dictionary/XButton.png"
             hover "gui/dictionary/XButton.png"
@@ -206,17 +224,15 @@ screen dictionary_popup(entry):
             action [Stop("voice"), Hide("dictionary_popup")]
             xalign 1.0
             yalign 0.0
-            xoffset 100
-            yoffset -100
+            xoffset 70
+            yoffset -110
 
-        # --- Main Content Layout ---
         vbox:
             style "dbg_vbox"
             spacing 20
             xfill True
             yfill True
 
-            # ===== Title Section =====
             frame:
                 background Null()
                 xfill True
@@ -243,14 +259,12 @@ screen dictionary_popup(entry):
                         yalign 1.0
                         yoffset 20
 
-            # ===== Content Section =====
             hbox:
                 style "dbg_hbox"
                 spacing 24
                 xfill True
                 yfill True
 
-                # ---- LEFT COLUMN ----
                 vbox:
                     style "dbg_vbox"
                     spacing 14
@@ -262,10 +276,11 @@ screen dictionary_popup(entry):
                         text entry["ja_expl"] style "jp_text" xoffset 40
 
                     if entry.get("examples"):
+
                         text "{rb}用例{/rb}{rt}ようれい{/rt} / Examples:" style "dictionary_section"
 
                         frame:
-                            background Frame("gui/dictionary/Box_Blue_Square.png")
+                            background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
                             padding (30, 20)
                             xfill True
                             yfill True
@@ -279,18 +294,22 @@ screen dictionary_popup(entry):
 
                                 vbox:
                                     spacing 10
+
                                     for ex in entry["examples"]:
+
                                         frame:
                                             background Null()
                                             padding (10, 8)
+
                                             vbox:
                                                 spacing 4
+
                                                 if ex.get("ja"):
                                                     text ex["ja"] style "jp_text"
+
                                                 if ex.get("en"):
                                                     text "{i}%s{/i}" % ex["en"] style "dictionary_text_en"
 
-                # ---- RIGHT COLUMN ----
                 vbox:
                     style "dbg_vbox"
                     spacing 16
@@ -298,47 +317,72 @@ screen dictionary_popup(entry):
                     yfill True
                     xalign 0.5
 
-                    # POS label
                     if entry.get("pos"):
+
                         $ _pos_key = entry.get("pos", "").lower()
                         $ _pos_label = POS_JA.get(_pos_key, _pos_key)
                         $ _pos_color = POS_COLORS.get(_pos_key, "#FFFFFF")
+
                         text "[_pos_label]":
                             style "dictionary_pos_text"
                             color _pos_color
                             xalign 0.5
 
-                    # Image / Placeholder logic (fit inside 400x400)
                     if entry.get("image"):
+
                         frame:
                             style "dictionary_image_frame"
                             xalign 0.5
+
                             fixed:
                                 xsize 400
                                 ysize 400
                                 xalign 0.5
                                 yalign 0.5
-                                add Transform("dict_images/%s" % entry["image"], fit="contain", xysize=(400, 400)) xalign 0.5 yalign 0.5
+
+                                add Transform(
+                                    "dict_images/%s" % entry["image"],
+                                    fit="contain",
+                                    xysize=(400, 400)
+                                ) xalign 0.5 yalign 0.5
+
                     else:
+
                         frame:
                             style "dictionary_image_frame"
                             xalign 0.5
+
                             has fixed:
                                 xsize 400
                                 ysize 200
                                 xalign 0.5
                                 yalign 0.5
+
                             text "No Image" style "dictionary_text_en" xalign 0.5 yalign 0.5
 
-                    # Audio button logic
-                    if entry.get("audio"):
-                        imagebutton:
-                            idle "gui/dictionary/Icon_Small_Blank_Audio.png"
-                            hover "gui/dictionary/Icon_Small_Blank_Audio.png"
-                            at btn_zoom
-                            action Play("voice", "dict_audio/%s" % entry["audio"])
-                            xalign 0.5
-                    else:
-                        add "gui/dictionary/Icon_Small_Blank_AudioOff.png" xalign 0.5
+                    fixed:
+                        xalign 0.5
+                        ysize 80
+
+                        $ _audio_file = entry.get("audio", "")
+                        $ _audio_path = "dict_audio/%s" % _audio_file if _audio_file else ""
+                        $ _has_audio = bool(_audio_file) and renpy.loadable(_audio_path)
+
+                        if _has_audio:
+
+                            imagebutton:
+                                idle "gui/dictionary/Icon_Small_Blank_Audio.png"
+                                hover "gui/dictionary/Icon_Small_Blank_Audio.png"
+                                at btn_zoom
+                                action Play("voice", _audio_path)
+                                xalign 0.5
+                                yalign 0.5
+
+                        else:
+
+                            add "gui/dictionary/Icon_Small_Blank_AudioOff.png":
+                                xalign 0.5
+                                yalign 0.5
+
 
     key "game_menu" action [Stop("voice"), Hide("dictionary_popup")]
