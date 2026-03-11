@@ -5,35 +5,10 @@
 define config.window = "hide"
 
 # Character Name Shortcuts
-define h = Character( # Haruto speaking
-    "はると", 
-    image="haruto",
-    window_style="haruto_window",
-    namebox_style="haruto_namebox",
-    who_style="haruto_name",
-    )
-define ht = Character(  # Haruto Internal Thoughts
-    image="haruto",
-    window_style="haruto_window",
-)
-define a = Character(
-    "あいおみ",
-    image="aiomi",
-    window_style="aiomi_window",
-    namebox_style="aiomi_namebox",
-    )
-define k = Character(
-    "カイ"
-    )
-define m = Character(
-    "みお"
-    )
-define r = Character(
-    "りな"
-    )
-define n = Character(
-    window_style="narrator_window",
-)
+define h = Character("Haruto", who_style="haruto_name")
+define a = Character("Aiomi", who_style="aiomi_name")
+define n = Character(None)
+
 
 
 label start:
@@ -61,41 +36,42 @@ label start:
     # Only show the textbox after everything is in place
     window show
 
-    ht "僕は高校の２年生、はると鈴木です。 "
+    h "(My name is Haruto Suzuki, a second year high school student.) "
 
-    ht "I always try and do my best.{p}I get good grades, I help out at school. {p}I always do what I'm supposed to do."
+    h "(I always try and do my best.)"
+    h "(I get good grades, I help out at school. I always do what I'm supposed to do.)"
 
     # --- SCENE CHANGE: School Classroom ---
     scene classroom with fade
     show haruto neutral at walkinleft
 
 
-    ht "I'm a member of the student council, and often get extra duties to help out."
+    h "(I'm a member of the student council, and often get extra duties to help out.)"
 
-    ht "But that's okay. I'm glad to help."
+    h "(But that's okay. I'm glad to help.)"
 
-    ht "Sometimes it's hard to find the time to study, but I manage."
+    h "(Sometimes it's hard to find the time to study, but I manage.)"
 
-    ht "Mid term exams are coming up soon, and the school is getting ready for the culture festival, so things are getting pretty busy."
+    h "(Mid term exams are coming up soon, and the school is getting ready for the culture festival, so things are getting pretty busy.)"
 
-    ht "I'm worried I might not be able to do all the things everyone needs me to do."
+    h "(I'm worried I might not be able to do all the things everyone needs me to do.)"
 
     # --- SCENE CHANGE: Evening Street ---
     scene street_night with fade
     show haruto neutral at walkinleft
 
-    ht "I had to stay late again today."
+    h "(I had to stay late again today.)"
 
-    ht "It can be tough sometimes, but this is what it is to be a high school student."
+    h "(It can be tough sometimes, but this is what it is to be a high school student.)"
 
     # --- SCENE CHANGE: Evening Shrine ---
     scene shrine_night with fade
     show haruto neutral at bottomleft
     play music "music/Forgotten Memories.mp3" fadein 1 fadeout 1 volume 0.4
 
-    ht "Oh, I didn't mean to come to a shrine."
+    h "(Oh, I didn't mean to come to a shrine.)"
 
-    ht "Well, when you're at a shrine you're supposed to pray right?"
+    h "(Well, when you're at a shrine you're supposed to pray right?)"
 
     # SFX: clap, clap
     h "*Clap*"
@@ -193,13 +169,13 @@ label start:
 
     a "I'm the Goddess of this shrine, Aiomi!"
 
-    ht "A dangerous pervert... I should go home."
+    h "(A dangerous pervert... I should go home.)"
 
     h "Right, of course. I should probably be going anyway. Nice to meet you."
 
     a "You don't believe me?! Come on~"
 
-    ht "Why am I even here. {p}I should go home quickly."
+    h "Why am I even here. {p}I should go home quickly."
 
     # Serious Aiomi
     a "Haruto-kun, wait."
@@ -216,7 +192,7 @@ label start:
     # She whispers "Babel" in some glitch text or something
     # And then kisses Haruto
 
-    ht "I knew it! She is a dangerous pervert..."
+    h "(I knew it! She is a dangerous pervert...)"
 
     # Fade to black
     scene black with fade

@@ -7,7 +7,8 @@
 # - POS-specific colors
 # - Yellow outline styling
 # - Click word → dictionary popup
-# - Hover word → tooltip screen
+# - Hover word → tooltip screen (if tooltip_on is true)
+# - Supports toggling tooltip_on from the popup UI
 #
 # Tooltip UI is implemented in:
 # dictionary_tooltip.rpy
@@ -23,6 +24,7 @@ init -1 python:
 
     import json
     import re
+    import os
 
 
     # --------------------------
@@ -73,6 +75,20 @@ init -1 python:
 
 
     # --------------------------
+    # Dictionary path helpers
+    # --------------------------
+    def get_dictionary_json_write_path(filename="dictionary.json"):
+        """
+        Real writable filesystem path.
+        Works in development / unpacked projects.
+
+        If dictionary.json is packed into an archive in a built game,
+        writing back to it may not work.
+        """
+        return os.path.join(config.gamedir, filename)
+
+
+    # --------------------------
     # Load dictionary JSON
     # --------------------------
     def load_dictionary_json(path="dictionary.json"):
@@ -82,17 +98,13 @@ init -1 python:
         global _DICTIONARY_RE
 
         try:
-
             with renpy.file(path) as f:
                 data = json.load(f) or {}
-
         except Exception:
-
             data = {}
 
         _DICTIONARY = data
         _ID_TO_POS.clear()
-
 
         def normalize_pos(pos):
 
@@ -106,7 +118,6 @@ init -1 python:
 
             return None
 
-
         ids = []
 
         for word_id, entry in data.items():
@@ -115,27 +126,87 @@ init -1 python:
                 continue
 
             low = word_id.lower()
-
             ids.append(low)
-
             _ID_TO_POS[low] = normalize_pos(entry.get("pos"))
-
 
         ids.sort(key=len, reverse=True)
 
-
         if ids:
-
             pattern = r"\b(" + "|".join(re.escape(k) for k in ids) + r")\b"
-
             _DICTIONARY_RE = re.compile(pattern, re.IGNORECASE)
-
         else:
-
             _DICTIONARY_RE = None
 
 
     load_dictionary_json("dictionary.json")
+
+
+    # --------------------------
+    # Save dictionary JSON
+    # --------------------------
+    def save_dictionary_json(path="dictionary.json"):
+        """
+        Save the current in-memory _DICTIONARY back to disk.
+        """
+        write_path = get_dictionary_json_write_path(path)
+
+        with open(write_path, "w", encoding="utf-8") as f:
+            json.dump(_DICTIONARY, f, ensure_ascii=False, indent=2)
+
+
+    # --------------------------
+    # Tooltip flag helpers
+    # --------------------------
+    def entry_tooltip_is_on(entry):
+        """
+        Default behavior:
+        - missing tooltip_on => True
+        - explicit false => False
+        """
+        if not isinstance(entry, dict):
+            return True
+
+        return bool(entry.get("tooltip_on", True))
+
+
+    def should_show_dictionary_tooltip(term):
+        entry = _DICTIONARY.get(term)
+        if not entry:
+            return False
+
+        return entry_tooltip_is_on(entry)
+
+
+    def toggle_dictionary_tooltip_for_entry(term):
+        """
+        Flip tooltip_on for a specific dictionary entry,
+        save dictionary.json, reload in-memory dictionary,
+        and refresh currently open popup.
+        """
+        if not term:
+            return
+
+        entry = _DICTIONARY.get(term)
+        if not entry:
+            return
+
+        current = bool(entry.get("tooltip_on", True))
+        entry["tooltip_on"] = not current
+
+        try:
+            save_dictionary_json("dictionary.json")
+        except Exception as e:
+            renpy.notify("Failed to save dictionary.json")
+            return
+
+        load_dictionary_json("dictionary.json")
+
+        updated_entry = _DICTIONARY.get(term, entry)
+
+        store.dict_tooltip_term = None
+        renpy.hide_screen("dictionary_hover_tooltip")
+        renpy.show_screen("dictionary_popup", entry=updated_entry, entry_key=term)
+        renpy.restart_interaction()
 
 
     # --------------------------
@@ -159,7 +230,6 @@ init -1 python:
                 key = shown.lower()
 
                 pos = _ID_TO_POS.get(key)
-
                 color = POS_COLORS.get(pos, DEFAULT_POS_COLOR)
 
                 return (
@@ -193,18 +263,17 @@ init -10 python:
         entry = _DICTIONARY.get(term)
 
         if not entry:
-
             entry = {
                 "en": term,
                 "ja": "—",
-                "ja_expl": "該当する項目が見つかりません。"
+                "ja_expl": "該当する項目が見つかりません。",
+                "tooltip_on": True,
             }
 
         store.dict_tooltip_term = None
         renpy.hide_screen("dictionary_hover_tooltip")
 
-        renpy.show_screen("dictionary_popup", entry=entry)
-
+        renpy.show_screen("dictionary_popup", entry=entry, entry_key=term)
         renpy.restart_interaction()
 
 
@@ -217,9 +286,11 @@ init -10 python:
     def _show_dictionary_tooltip(term):
 
         if not term:
-
             _hide_dictionary_tooltip()
+            return
 
+        if not should_show_dictionary_tooltip(term):
+            _hide_dictionary_tooltip()
             return
 
         x, y = renpy.get_mouse_pos()
@@ -229,25 +300,20 @@ init -10 python:
         store.dict_tooltip_y = y
 
         renpy.show_screen("dictionary_hover_tooltip")
-
         renpy.restart_interaction()
 
 
     def _hide_dictionary_tooltip():
 
         store.dict_tooltip_term = None
-
         renpy.hide_screen("dictionary_hover_tooltip")
-
         renpy.restart_interaction()
 
 
     def _update_dict_tooltip_mouse():
 
         if store.dict_tooltip_term:
-
             x, y = renpy.get_mouse_pos()
-
             store.dict_tooltip_x = x
             store.dict_tooltip_y = y
 
@@ -258,7 +324,6 @@ init -10 python:
     def dictionary_hyperlink_styler(target):
 
         if target and target.startswith("dictionary:"):
-
             return style.dictionary_word
 
         return style.hyperlink_text
@@ -273,9 +338,7 @@ init -10 python:
             return
 
         if target.startswith("dictionary:"):
-
             term = target[len("dictionary:"):]
-
             _dictionary_hyperlink(term)
 
         return
@@ -287,13 +350,9 @@ init -10 python:
     def dictionary_hyperlink_focus(target):
 
         if target and target.startswith("dictionary:"):
-
             term = target[len("dictionary:"):]
-
             _show_dictionary_tooltip(term)
-
         else:
-
             _hide_dictionary_tooltip()
 
         return
@@ -303,9 +362,7 @@ init -10 python:
     # Apply hyperlink behavior
     # --------------------------
     style.say_dialogue.hyperlink_functions = (
-
         dictionary_hyperlink_styler,
         dictionary_hyperlink_clicked,
         dictionary_hyperlink_focus,
-
     )

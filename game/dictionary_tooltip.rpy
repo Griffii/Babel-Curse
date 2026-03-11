@@ -4,12 +4,13 @@ screen dictionary_hover_tooltip():
 
     if dict_tooltip_term and dict_tooltip_term in _DICTIONARY:
 
-        timer 0.02 repeat True action Function(_update_dict_tooltip_mouse)
-
         $ entry = _DICTIONARY[dict_tooltip_term]
+        $ tooltip_enabled = bool(entry.get("tooltip_on", True))
         $ ja_text = entry.get("ja", "")
 
-        if ja_text:
+        if tooltip_enabled and ja_text:
+
+            timer 0.02 repeat True action Function(_update_dict_tooltip_mouse)
 
             $ tooltip_w = 260
             $ tooltip_x = dict_tooltip_x + 20
@@ -23,7 +24,6 @@ screen dictionary_hover_tooltip():
 
             if tooltip_y < 20:
                 $ tooltip_y = 20
-
 
             frame:
                 xpos tooltip_x

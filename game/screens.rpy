@@ -93,33 +93,46 @@ style frame:
 ## this to manage text display. It can also create displayables with id "who"
 ## and id "window" to apply style properties.
 ##
-## https://www.renpy.org/doc/html/screen_special.html#say
+## https://www.renpy.org/doc/html/screen_special.html#say  
+## 
+##
+## Displays dialogue and speaker name.
+
+## Say screen ##################################################################
+##
+## Displays dialogue and speaker name.
 
 screen say(who, what):
 
+    # --- MAIN TEXTBOX FIRST ---
     window:
         id "window"
 
-        if who is not None:
+        text what:
+            id "what"
 
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
+    # --- NAMEBOX ON TOP OF TEXTBOX ---
+    if who is not None:
 
-        text what id "what"
+        window:
+            id "namebox"
+            style "namebox"
 
+            text who:
+                id "who"
 
-    ## If there's a side image, display it above the text. Do not display on
-    ## the phone variant - there's no room.
+    # Optional side image
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
 
-## Make the namebox available for styling through the Character object.
+# Allow characters to override namebox styling
 init python:
-    config.character_id_prefixes.append('namebox')
+    if "namebox" not in config.character_id_prefixes:
+        config.character_id_prefixes.append("namebox")
 
+
+# Base styles
 style window is default
 style say_label is default
 style say_dialogue is default
@@ -129,39 +142,57 @@ style namebox is default
 style namebox_label is say_label
 
 
+# TEXTBOX STYLE
 style window:
+
     xalign 0.5
-    xfill True
-    yalign gui.textbox_yalign
-    ysize gui.textbox_height
+    ypos 820
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    xsize 1300
+    ysize 260
 
+    xpadding 70
+    top_padding 36
+    bottom_padding 40
+
+    background Frame("gui/textbox.png", 32, 32)
+
+
+# NAMEBOX STYLE
 style namebox:
-    xpos gui.name_xpos
-    xanchor gui.name_xalign
-    xsize gui.namebox_width
-    ypos gui.name_ypos
-    ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
-    padding gui.namebox_borders.padding
+    # Top-left of textbox area
+    xpos 310
+    ypos 730
 
+    # Variable width based on text
+    xpadding 28
+    ypadding 14
+    xminimum 220
+    ysize 90
+
+    background Frame("gui/namebox.png", 32, 32)
+
+
+# CHARACTER NAME TEXT
 style say_label:
-    properties gui.text_properties("name", accent=True)
-    xalign gui.name_xalign
+
+    xalign 0.0
     yalign 0.5
 
+
+# DIALOGUE TEXT
 style say_dialogue:
+
     properties gui.text_properties("dialogue")
 
-    xpos gui.dialogue_xpos
-    xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
+    xalign 0.0
+    xfill True
 
     adjust_spacing False
 
-# Sprite Positioning -------------------
+
+# Sprite positioning helpers
 transform bottomleft:
     xalign 0.0
     yalign 0.0
@@ -474,60 +505,124 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+################################################################################
+## Custom Main Menu Styles and Screen
+################################################################################
+
+
+style mm_button_text is gui_text
+
+style mm_button_text:
+    size 46
+    color "#1f1f1f"
+    outlines [(2, "#ffffff88", 0, 0)]
+    yalign 0.5
+
+
+screen main_menu_icon_button(label, action, icon_idle, icon_hover):
+
+    default _is_hover = False
+
+    button:
+        background None
+        xsize 500
+        ysize 150
+        hovered [SetLocalVariable("_is_hover", True), Play("sound", "audio/ui/Wood_Block.ogg")]
+        unhovered SetLocalVariable("_is_hover", False)
+        action [Play("sound", "audio/ui/Positive_Beep.ogg"), action]
+
+        add ("gui/main_menu/button-hover.png" if _is_hover else "gui/main_menu/button.png"):
+            xalign 0.5
+            yalign 0.5
+            xsize 500
+            ysize 150
+
+        fixed:
+            xfill True
+            yfill True
+
+            add (icon_hover if _is_hover else icon_idle):
+                xpos 34
+                yalign 0.5
+                zoom 0.6
+
+            text label:
+                style "mm_button_text"
+                xpos 145
+                yalign 0.5
+
+
 screen main_menu():
 
-    ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    add Transform("gui/main_menu/paper_texture.png", xysize=(1920, 1080))
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
-
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
-
-    if gui.show_name:
+    fixed:
+        xfill True
+        yfill True
 
         vbox:
-            style "main_menu_vbox"
+            xalign 1.0
+            yalign 0.0
+            xoffset -120
+            yoffset 120
+            spacing 10
 
-            text "[config.name!t]":
-                style "main_menu_title"
+            text "The":
+                font "fonts/BadComic-Regular.ttf"
+                size 110
+                color "#2a2a2a"
+                outlines [(1, "#00000055", 0, 0)]
+                xalign 1.0
 
-            text "[config.version]":
-                style "main_menu_version"
+            text "Babel":
+                font "fonts/BadComic-Regular.ttf"
+                size 110
+                color "#2a2a2a"
+                outlines [(1, "#00000055", 0, 0)]
+                xalign 1.0
 
+            text "Curse":
+                font "fonts/BadComic-Regular.ttf"
+                size 110
+                color "#2a2a2a"
+                outlines [(1, "#00000055", 0, 0)]
+                xalign 1.0
 
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
+        vbox:
+            xpos 140
+            yalign 0.58
+            spacing 28
 
-style main_menu_frame:
-    xsize 420
-    yfill True
+            use main_menu_icon_button(
+                label="Play",
+                action=Start(),
+                icon_idle="gui/main_menu/icon-play.png",
+                icon_hover="gui/main_menu/icon-play-hover.png"
+            )
 
-    background "gui/overlay/main_menu.png"
+            use main_menu_icon_button(
+                label="Load",
+                action=ShowMenu("load"),
+                icon_idle="gui/main_menu/icon-load.png",
+                icon_hover="gui/main_menu/icon-load-hover.png"
+            )
 
-style main_menu_vbox:
-    xmaximum 1200 
-    xalign 1.0
-    yalign 1.0
-    xoffset -30
-    yoffset -30
+            use main_menu_icon_button(
+                label="Settings",
+                action=ShowMenu("preferences"),
+                icon_idle="gui/main_menu/icon-settings.png",
+                icon_hover="gui/main_menu/icon-settings-hover.png"
+            )
 
-style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+            use main_menu_icon_button(
+                label="Exit",
+                action=Quit(confirm=True),
+                icon_idle="gui/main_menu/icon-exit.png",
+                icon_hover="gui/main_menu/icon-exit-hover.png"
+            )
 
-style main_menu_title:
-    properties gui.text_properties("title")
-
-style main_menu_version:
-    properties gui.text_properties("version")
 
 
 ## Game Menu screen ############################################################

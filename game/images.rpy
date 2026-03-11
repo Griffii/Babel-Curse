@@ -10,14 +10,13 @@ image shrine_night = "bg/Shrine_Summer_Night.png"
 image school_hall = "bg/School_Hallway_Day.png"
 image classroom = "bg/Classroom_Day.png"
 
-# ---------- Haruto  ----------
+# ---------- Character Sprites  ----------
 image haruto neutral = "sprites/Haruto_Placeholder.png"
 image aiomi neutral = "sprites/Aiomi_Placeholder.png"
 image kai neutral = "sprites/Kai_Placeholder.png"
 image mio neutral = "sprites/Mio_Placeholder.png"
 image rina neutral = "sprites/Rina_Placeholder.png"
 
-# ---------- Props (foreground) ----------
 
 
 

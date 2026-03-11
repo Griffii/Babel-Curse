@@ -1,13 +1,18 @@
 # ============================================
 # dictionary_menu.rpy — Ren'Py 8.4 compatible
-# Layout update:
-# - Close button floats/overlaps at top-right (outside main flow)
-# - Main content = vbox with 80px internal margin: Title Box + Content Box
-# - Title Box: EN/JP centered on same midline; EN grows RIGHT, JP grows LEFT; bottoms aligned
-# - Content Box: hbox -> LEFT (Definition, Examples) / RIGHT (POS, Image, Play)
-# - Images fit inside 400x400 (keep aspect).
-# - If no image → show "No Image"
-# - If no audio → disable play button and show AudioOff icon.
+# Smaller centered popup version:
+# - Fixed popup size: 1250 x 800
+# - Centered on screen
+# - Definition section removed
+# - EN/JP main titles moved to left side above example box
+# - Titles stacked vertically:
+#     School
+#     学校
+# - Example section label changed to 例文 / Examples
+# - No furigana shown for Japanese text in this screen
+# - Example box enlarged
+# - Audio icon reduced in size
+# - Left column uses fixed positioning for tighter vertical control
 # ============================================
 
 
@@ -83,7 +88,7 @@ init -1 python:
     def open_dict_popup_by_key(key):
         entry = DICTIONARY_DATA.get(key)
         if entry:
-            renpy.show_screen("dictionary_popup", entry=entry)
+            renpy.show_screen("dictionary_popup", entry=entry, entry_key=key)
 
 
 init python:
@@ -112,37 +117,33 @@ init python:
     style.dbg_hbox.background = Null()
 
     # ---------- Text Styles ----------
-
     style.jp_text = Style(style.default)
     style.jp_text.font = JP_FONT
-    style.jp_text.size = 42
+    style.jp_text.size = 32
     style.jp_text.color = COL_TEXT_MAIN
     style.jp_text.line_spacing = 2
-    style.jp_text.ruby_style = style.ruby_body
-    style.jp_text.ruby_line_leading = 22
+    style.jp_text.ruby_style = None
     style.jp_text.outlines = TEXT_SHADOW
 
     style.jp_title = Style(style.default)
     style.jp_title.font = JP_FONT
-    style.jp_title.size = 80
+    style.jp_title.size = 70
     style.jp_title.color = COL_TITLE_JP
     style.jp_title.outlines = [
         (2, COL_TITLE_OUT, 0, 0),
         (1, COL_TEXT_SHADOW, 2, 2)
     ]
-    style.jp_title.ruby_style = style.ruby_title
-    style.jp_title.ruby_line_leading = 30
+    style.jp_title.ruby_style = None
 
     style.dictionary_section = Style(style.default)
     style.dictionary_section.font = JP_FONT
-    style.dictionary_section.size = 42
+    style.dictionary_section.size = 32
     style.dictionary_section.color = COL_SECTION
-    style.dictionary_section.ruby_style = style.ruby_body
-    style.dictionary_section.ruby_line_leading = 18
+    style.dictionary_section.ruby_style = None
     style.dictionary_section.outlines = TEXT_SHADOW
 
     style.dictionary_title_en = Style(style.default)
-    style.dictionary_title_en.size = 80
+    style.dictionary_title_en.size = 70
     style.dictionary_title_en.color = COL_TITLE_EN
     style.dictionary_title_en.outlines = [
         (2, COL_TITLE_OUT, 0, 0),
@@ -159,24 +160,30 @@ init python:
     style.dictionary_pos_text.font = JP_FONT
     style.dictionary_pos_text.size = 42
     style.dictionary_pos_text.color = "#FFFFFF"
-    style.dictionary_pos_text.ruby_style = style.ruby_body
-    style.dictionary_pos_text.ruby_line_leading = 18
+    style.dictionary_pos_text.ruby_style = None
     style.dictionary_pos_text.background = Frame(Solid(COL_POS_TAGBG), 8, 8)
     style.dictionary_pos_text.xpadding = 14
     style.dictionary_pos_text.ypadding = 8
     style.dictionary_pos_text.outlines = TEXT_SHADOW
 
+    # Tooltip toggle text
+    style.dictionary_toggle_label = Style(style.default)
+    style.dictionary_toggle_label.font = JP_FONT
+    style.dictionary_toggle_label.size = 28
+    style.dictionary_toggle_label.color = "#FFFFFF"
+    style.dictionary_toggle_label.outlines = TEXT_SHADOW
+
     # Panel frame (main container)
     style.dictionary_frame = Style(style.default)
     style.dictionary_frame.background = Frame("gui/dictionary/Box_Square.png", 32, 32)
-    style.dictionary_frame.xpadding = 40
-    style.dictionary_frame.ypadding = 80
+    style.dictionary_frame.xpadding = 32
+    style.dictionary_frame.ypadding = 32
 
     # Image frame
     style.dictionary_image_frame = Style(style.default)
     style.dictionary_image_frame.background = Frame("gui/dictionary/button_square_line_white.png", 32, 32)
-    style.dictionary_image_frame.xpadding = 20
-    style.dictionary_image_frame.ypadding = 20
+    style.dictionary_image_frame.xpadding = 16
+    style.dictionary_image_frame.ypadding = 16
 
 
 # ---------- Hover Zoom (buttons only) ----------
@@ -188,6 +195,11 @@ transform btn_zoom:
         ease 0.12 zoom 1.0
 
 
+# ---------- Smaller Audio Icon ----------
+transform dictionary_audio_small:
+    zoom 0.72
+
+
 # ---------- Popup Animations ----------
 transform dictionary_popup_swipe_in:
     alpha 0.0
@@ -196,7 +208,7 @@ transform dictionary_popup_swipe_in:
 
 
 # ---------- Popup Screen ----------
-screen dictionary_popup(entry):
+screen dictionary_popup(entry, entry_key=None):
 
     tag dictionary_popup
     modal True
@@ -213,9 +225,10 @@ screen dictionary_popup(entry):
         style "dictionary_frame"
         at dictionary_popup_swipe_in
         xalign 0.5
-        yalign 0.45
-        xmaximum 0.92
-        ymaximum 0.88
+        yalign 0.5
+        yoffset -100
+        xsize 1250
+        ysize 800
 
         imagebutton:
             idle "gui/dictionary/XButton.png"
@@ -224,71 +237,92 @@ screen dictionary_popup(entry):
             action [Stop("voice"), Hide("dictionary_popup")]
             xalign 1.0
             yalign 0.0
-            xoffset 70
-            yoffset -110
+            xoffset 52
+            yoffset -86
 
         vbox:
             style "dbg_vbox"
-            spacing 20
+            spacing 16
             xfill True
             yfill True
 
+            # Top-right tooltip row only
             frame:
                 background Null()
                 xfill True
-                yminimum 56
-                ymaximum 56
-                padding (0, 0, 0, 8)
+                yminimum 52
+                ymaximum 52
+                padding (0, 0, 0, 0)
 
                 fixed:
                     xfill True
                     yfill True
-                    $ _title_gap = 40
 
-                    text entry.get("ja", "") style "jp_title":
-                        xpos 0.5
-                        xanchor 0.0
-                        xoffset _title_gap / 2
-                        yalign 1.0
-                        yoffset 20
+                    if entry_key and entry_key in _DICTIONARY:
 
-                    text entry.get("en", "") style "dictionary_title_en":
-                        xpos 0.5
-                        xanchor 1.0
-                        xoffset -_title_gap / 2
-                        yalign 1.0
-                        yoffset 20
+                        $ _tooltip_enabled = bool(entry.get("tooltip_on", True))
+                        $ _tooltip_icon = "gui/dictionary/check_square_color_checkmark.png" if _tooltip_enabled else "gui/dictionary/check_square_color.png"
+
+                        fixed:
+                            xalign 1.0
+                            yalign 0.0
+                            xsize 220
+                            ysize 48
+                            xoffset -12
+                            yoffset -4
+
+                            text "Tooltip":
+                                style "dictionary_toggle_label"
+                                xpos 0
+                                yalign 0.5
+
+                            imagebutton:
+                                idle _tooltip_icon
+                                hover _tooltip_icon
+                                at btn_zoom
+                                xpos 130
+                                yalign 0.5
+                                action Function(toggle_dictionary_tooltip_for_entry, entry_key)
 
             hbox:
                 style "dbg_hbox"
-                spacing 24
+                spacing 8
                 xfill True
                 yfill True
 
-                vbox:
-                    style "dbg_vbox"
-                    spacing 14
-                    xmaximum 0.62
+                # ---------- LEFT COLUMN ----------
+                fixed:
+                    xmaximum 0.68
                     yfill True
 
-                    if entry.get("ja_expl"):
-                        text "{rb}説明{/rb}{rt}せつめい{/rt} / Definition:" style "dictionary_section"
-                        text entry["ja_expl"] style "jp_text" xoffset 40
+                    if entry.get("en"):
+                        text entry.get("en", "") style "dictionary_title_en":
+                            xpos 0
+                            ypos 32
+
+                    if entry.get("ja"):
+                        text entry.get("ja", "") style "jp_title":
+                            xpos 0
+                            ypos 102
 
                     if entry.get("examples"):
 
-                        text "{rb}用例{/rb}{rt}ようれい{/rt} / Examples:" style "dictionary_section"
+                        text "例文 / Examples:" style "dictionary_section":
+                            xpos 0
+                            ypos 182
 
                         frame:
                             background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
-                            padding (30, 20)
+                            padding (20, 14)
                             xfill True
-                            yfill True
+                            ypos 228
+                            ysize 400
 
                             viewport id "examples_vp":
                                 mousewheel True
                                 draggable True
                                 scrollbars "vertical"
+                                side_yfill True
                                 xfill True
                                 yfill True
 
@@ -310,10 +344,11 @@ screen dictionary_popup(entry):
                                                 if ex.get("en"):
                                                     text "{i}%s{/i}" % ex["en"] style "dictionary_text_en"
 
+                # ---------- RIGHT COLUMN ----------
                 vbox:
                     style "dbg_vbox"
-                    spacing 16
-                    xmaximum 500
+                    spacing 14
+                    xmaximum 360
                     yfill True
                     xalign 0.5
 
@@ -335,15 +370,15 @@ screen dictionary_popup(entry):
                             xalign 0.5
 
                             fixed:
-                                xsize 400
-                                ysize 400
+                                xsize 300
+                                ysize 300
                                 xalign 0.5
                                 yalign 0.5
 
                                 add Transform(
                                     "dict_images/%s" % entry["image"],
                                     fit="contain",
-                                    xysize=(400, 400)
+                                    xysize=(300, 300)
                                 ) xalign 0.5 yalign 0.5
 
                     else:
@@ -353,8 +388,8 @@ screen dictionary_popup(entry):
                             xalign 0.5
 
                             has fixed:
-                                xsize 400
-                                ysize 200
+                                xsize 300
+                                ysize 170
                                 xalign 0.5
                                 yalign 0.5
 
@@ -362,7 +397,7 @@ screen dictionary_popup(entry):
 
                     fixed:
                         xalign 0.5
-                        ysize 80
+                        ysize 64
 
                         $ _audio_file = entry.get("audio", "")
                         $ _audio_path = "dict_audio/%s" % _audio_file if _audio_file else ""
@@ -373,16 +408,15 @@ screen dictionary_popup(entry):
                             imagebutton:
                                 idle "gui/dictionary/Icon_Small_Blank_Audio.png"
                                 hover "gui/dictionary/Icon_Small_Blank_Audio.png"
-                                at btn_zoom
+                                at btn_zoom, dictionary_audio_small
                                 action Play("voice", _audio_path)
                                 xalign 0.5
                                 yalign 0.5
 
                         else:
 
-                            add "gui/dictionary/Icon_Small_Blank_AudioOff.png":
+                            add "gui/dictionary/Icon_Small_Blank_AudioOff.png" at dictionary_audio_small:
                                 xalign 0.5
                                 yalign 0.5
-
 
     key "game_menu" action [Stop("voice"), Hide("dictionary_popup")]

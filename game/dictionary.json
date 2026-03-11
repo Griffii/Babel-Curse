@@ -15,9 +15,9 @@
       }
     ],
     "image": "worry.png",
-    "audio": "worry.mp3"
+    "audio": "worry.mp3",
+    "tooltip_on": true
   },
-
   "study": {
     "en": "Study",
     "ja": "勉強する",
@@ -34,9 +34,9 @@
       }
     ],
     "image": "study.png",
-    "audio": "study.mp3"
+    "audio": "study.mp3",
+    "tooltip_on": true
   },
-
   "probably": {
     "en": "Probably",
     "ja": "多分",
@@ -53,9 +53,9 @@
       }
     ],
     "image": "probably.png",
-    "audio": "probably.mp3"
+    "audio": "probably.mp3",
+    "tooltip_on": true
   },
-
   "sometimes": {
     "en": "Sometimes",
     "ja": "時々",
@@ -72,9 +72,9 @@
       }
     ],
     "image": "sometimes.png",
-    "audio": "sometimes.mp3"
+    "audio": "sometimes.mp3",
+    "tooltip_on": true
   },
-
   "shrine": {
     "en": "Shrine",
     "ja": "神社",
@@ -91,9 +91,9 @@
       }
     ],
     "image": "shrine.png",
-    "audio": "shrine.mp3"
+    "audio": "shrine.mp3",
+    "tooltip_on": true
   },
-
   "priest": {
     "en": "Priest",
     "ja": "神主",
@@ -110,9 +110,9 @@
       }
     ],
     "image": "priest.png",
-    "audio": "priest.mp3"
+    "audio": "priest.mp3",
+    "tooltip_on": true
   },
-
   "pray": {
     "en": "Pray",
     "ja": "祈る",
@@ -129,9 +129,9 @@
       }
     ],
     "image": "pray.png",
-    "audio": "pray.mp3"
+    "audio": "pray.mp3",
+    "tooltip_on": true
   },
-
   "choose": {
     "en": "Choose",
     "ja": "選ぶ",
@@ -148,9 +148,9 @@
       }
     ],
     "image": "choose.png",
-    "audio": "choose.mp3"
+    "audio": "choose.mp3",
+    "tooltip_on": true
   },
-
   "regular": {
     "en": "Regular",
     "ja": "普通の",
@@ -167,9 +167,9 @@
       }
     ],
     "image": "regular.png",
-    "audio": "regular.mp3"
+    "audio": "regular.mp3",
+    "tooltip_on": true
   },
-
   "exams": {
     "en": "Exams",
     "ja": "試験",
@@ -186,9 +186,9 @@
       }
     ],
     "image": "exams.png",
-    "audio": "exams.mp3"
+    "audio": "exams.mp3",
+    "tooltip_on": true
   },
-
   "school": {
     "en": "School",
     "ja": "学校",
@@ -205,9 +205,9 @@
       }
     ],
     "image": "school.png",
-    "audio": "school.mp3"
+    "audio": "school.mp3",
+    "tooltip_on": true
   },
-
   "job": {
     "en": "Job",
     "ja": "仕事",
@@ -224,9 +224,9 @@
       }
     ],
     "image": "job.png",
-    "audio": "job.mp3"
+    "audio": "job.mp3",
+    "tooltip_on": true
   },
-
   "yourself": {
     "en": "Yourself",
     "ja": "自分",
@@ -243,9 +243,9 @@
       }
     ],
     "image": "yourself.png",
-    "audio": "yourself.mp3"
+    "audio": "yourself.mp3",
+    "tooltip_on": true
   },
-
   "mistakes": {
     "en": "Mistakes",
     "ja": "間違い",
@@ -262,9 +262,9 @@
       }
     ],
     "image": "mistakes.png",
-    "audio": "mistakes.mp3"
+    "audio": "mistakes.mp3",
+    "tooltip_on": true
   },
-
   "tough": {
     "en": "Tough",
     "ja": "大変な",
@@ -281,9 +281,9 @@
       }
     ],
     "image": "tough.png",
-    "audio": "tough.mp3"
+    "audio": "tough.mp3",
+    "tooltip_on": true
   },
-
   "culture": {
     "en": "Culture",
     "ja": "文化",
@@ -300,9 +300,9 @@
       }
     ],
     "image": "culture.png",
-    "audio": "culture.mp3"
+    "audio": "culture.mp3",
+    "tooltip_on": true
   },
-
   "extra": {
     "en": "Extra",
     "ja": "余分の",
@@ -319,9 +319,9 @@
       }
     ],
     "image": "extra.png",
-    "audio": "extra.mp3"
+    "audio": "extra.mp3",
+    "tooltip_on": true
   },
-
   "duties": {
     "en": "Duties",
     "ja": "義務",
@@ -338,9 +338,9 @@
       }
     ],
     "image": "duties.png",
-    "audio": "duties.mp3"
+    "audio": "duties.mp3",
+    "tooltip_on": true
   },
-
   "glad": {
     "en": "Glad",
     "ja": "嬉しい",
@@ -357,9 +357,9 @@
       }
     ],
     "image": "glad.png",
-    "audio": "glad.mp3"
+    "audio": "glad.mp3",
+    "tooltip_on": true
   },
-
   "student council": {
     "en": "Student Council",
     "ja": "生徒会",
@@ -376,9 +376,9 @@
       }
     ],
     "image": "student_council.png",
-    "audio": "student_council.mp3"
+    "audio": "student_council.mp3",
+    "tooltip_on": true
   },
-
   "grades": {
     "en": "Grades",
     "ja": "成績",
@@ -395,9 +395,9 @@
       }
     ],
     "image": "grades.png",
-    "audio": "grades.mp3"
+    "audio": "grades.mp3",
+    "tooltip_on": true
   },
-
   "supposed to": {
     "en": "Supposed to",
     "ja": "〜はず",
@@ -414,6 +414,7 @@
       }
     ],
     "image": "supposed_to.png",
-    "audio": "supposed_to.mp3"
+    "audio": "supposed_to.mp3",
+    "tooltip_on": true
   }
 }
