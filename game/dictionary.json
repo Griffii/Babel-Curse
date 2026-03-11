@@ -3,7 +3,6 @@
     "en": "Worry",
     "ja": "心配する",
     "pos": "verb",
-    "ja_expl": "物事がうまくいくかどうかを不安に思うこと。",
     "examples": [
       {
         "en": "Don’t worry too much. Everything will be okay.",
@@ -22,7 +21,6 @@
     "en": "Study",
     "ja": "勉強する",
     "pos": "verb",
-    "ja_expl": "知識や技術を学ぶために努力すること。",
     "examples": [
       {
         "en": "I study English every night after dinner.",
@@ -41,7 +39,6 @@
     "en": "Probably",
     "ja": "多分",
     "pos": "adverb",
-    "ja_expl": "可能性が高いことを示す言い方。",
     "examples": [
       {
         "en": "He will probably come to the party.",
@@ -60,7 +57,6 @@
     "en": "Sometimes",
     "ja": "時々",
     "pos": "adverb",
-    "ja_expl": "一定ではない頻度で起こること。",
     "examples": [
       {
         "en": "Sometimes I walk home from school.",
@@ -79,7 +75,6 @@
     "en": "Shrine",
     "ja": "神社",
     "pos": "noun",
-    "ja_expl": "神様をまつる日本の伝統的な建物。",
     "examples": [
       {
         "en": "We visited a shrine on New Year’s Day.",
@@ -98,7 +93,6 @@
     "en": "Priest",
     "ja": "神主",
     "pos": "noun",
-    "ja_expl": "神社で儀式をおこなう人。",
     "examples": [
       {
         "en": "The priest bowed and began the ceremony.",
@@ -117,7 +111,6 @@
     "en": "Pray",
     "ja": "祈る",
     "pos": "verb",
-    "ja_expl": "神様に願いや感謝を伝えること。",
     "examples": [
       {
         "en": "They pray for good luck at the shrine.",
@@ -136,7 +129,6 @@
     "en": "Choose",
     "ja": "選ぶ",
     "pos": "verb",
-    "ja_expl": "複数の中からひとつを決めること。",
     "examples": [
       {
         "en": "Please choose your favorite color.",
@@ -155,7 +147,6 @@
     "en": "Regular",
     "ja": "普通の",
     "pos": "adjective",
-    "ja_expl": "特別ではなく、いつもと同じこと。",
     "examples": [
       {
         "en": "I ordered a regular coffee.",
@@ -174,7 +165,6 @@
     "en": "Exams",
     "ja": "試験",
     "pos": "noun",
-    "ja_expl": "学力や理解度を確かめるためのテスト。",
     "examples": [
       {
         "en": "Exams start next week.",
@@ -193,7 +183,6 @@
     "en": "School",
     "ja": "学校",
     "pos": "noun",
-    "ja_expl": "学ぶために子どもや学生が通う場所。",
     "examples": [
       {
         "en": "I go to school by train.",
@@ -206,13 +195,12 @@
     ],
     "image": "school.png",
     "audio": "school.mp3",
-    "tooltip_on": true
+    "tooltip_on": false
   },
   "job": {
     "en": "Job",
     "ja": "仕事",
     "pos": "noun",
-    "ja_expl": "収入を得るためにする活動。",
     "examples": [
       {
         "en": "She got a new job last month.",
@@ -231,7 +219,6 @@
     "en": "Yourself",
     "ja": "自分",
     "pos": "pronoun",
-    "ja_expl": "あなた自身を指す言葉。",
     "examples": [
       {
         "en": "Be proud of yourself.",
@@ -250,7 +237,6 @@
     "en": "Mistakes",
     "ja": "間違い",
     "pos": "noun",
-    "ja_expl": "正しくない行動や判断。",
     "examples": [
       {
         "en": "Everyone makes mistakes.",
@@ -269,7 +255,6 @@
     "en": "Tough",
     "ja": "大変な",
     "pos": "adjective",
-    "ja_expl": "難しくて、苦労が多いこと。",
     "examples": [
       {
         "en": "The exam was really tough.",
@@ -288,7 +273,6 @@
     "en": "Culture",
     "ja": "文化",
     "pos": "noun",
-    "ja_expl": "国や地域の考え方、習慣、芸術など。",
     "examples": [
       {
         "en": "I want to learn more about Japanese culture.",
@@ -307,7 +291,6 @@
     "en": "Extra",
     "ja": "余分の",
     "pos": "adjective",
-    "ja_expl": "必要な量よりも多いこと。",
     "examples": [
       {
         "en": "I bought some extra snacks.",
@@ -326,7 +309,6 @@
     "en": "Duties",
     "ja": "義務",
     "pos": "noun",
-    "ja_expl": "責任としてやらなければならないこと。",
     "examples": [
       {
         "en": "He finished all his duties before going home.",
@@ -345,7 +327,6 @@
     "en": "Glad",
     "ja": "嬉しい",
     "pos": "adjective",
-    "ja_expl": "喜びを感じること。",
     "examples": [
       {
         "en": "I’m glad you came today.",
@@ -364,7 +345,6 @@
     "en": "Student Council",
     "ja": "生徒会",
     "pos": "noun",
-    "ja_expl": "学校の代表として活動する学生グループ。",
     "examples": [
       {
         "en": "She is the president of the student council.",
@@ -383,7 +363,6 @@
     "en": "Grades",
     "ja": "成績",
     "pos": "noun",
-    "ja_expl": "学習の結果を示すスコアや評価。",
     "examples": [
       {
         "en": "His grades improved this semester.",
@@ -402,7 +381,6 @@
     "en": "Supposed to",
     "ja": "〜はず",
     "pos": "phrase",
-    "ja_expl": "予定や義務として「〜することになっている」という意味。",
     "examples": [
       {
         "en": "We’re supposed to meet at 3 p.m.",

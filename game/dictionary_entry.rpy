@@ -1,5 +1,5 @@
 # ============================================
-# dictionary_menu.rpy — Ren'Py 8.4 compatible
+# dictionary_menu.rpy — Ren'Py 8.5 compatible
 # Smaller centered popup version:
 # - Fixed popup size: 1250 x 800
 # - Centered on screen
@@ -13,6 +13,10 @@
 # - Example box enlarged
 # - Audio icon reduced in size
 # - Left column uses fixed positioning for tighter vertical control
+# - Placeholder back button added top-left
+# - Missing image falls back to dict_images/question-mark.png
+# - Tooltip button wrapped in white frame and fully clickable
+# - Close button renders above tooltip button
 # ============================================
 
 
@@ -166,7 +170,7 @@ init python:
     style.dictionary_pos_text.ypadding = 8
     style.dictionary_pos_text.outlines = TEXT_SHADOW
 
-    # Tooltip toggle text
+    # Top bar label style
     style.dictionary_toggle_label = Style(style.default)
     style.dictionary_toggle_label.font = JP_FONT
     style.dictionary_toggle_label.size = 28
@@ -186,13 +190,26 @@ init python:
     style.dictionary_image_frame.ypadding = 16
 
 
-# ---------- Hover Zoom (buttons only) ----------
+# ---------- Hover Zoom ----------
 transform btn_zoom:
     zoom 1.0
     on hover:
         ease 0.12 zoom 1.10
     on idle:
         ease 0.12 zoom 1.0
+
+
+# ---------- Hover + Click Animation ----------
+# Use `activate` instead of mousedown/mouseup so the click bounce works reliably on Ren'Py buttons.
+transform btn_interactive:
+    zoom 1.0
+    on hover:
+        ease 0.12 zoom 1.08
+    on idle:
+        ease 0.12 zoom 1.0
+    on activate:
+        ease 0.04 zoom 0.94
+        ease 0.08 zoom 1.08
 
 
 # ---------- Smaller Audio Icon ----------
@@ -230,23 +247,13 @@ screen dictionary_popup(entry, entry_key=None):
         xsize 1250
         ysize 800
 
-        imagebutton:
-            idle "gui/dictionary/XButton.png"
-            hover "gui/dictionary/XButton.png"
-            at btn_zoom
-            action [Stop("voice"), Hide("dictionary_popup")]
-            xalign 1.0
-            yalign 0.0
-            xoffset 52
-            yoffset -86
-
         vbox:
             style "dbg_vbox"
             spacing 16
             xfill True
             yfill True
 
-            # Top-right tooltip row only
+            # Top bar row
             frame:
                 background Null()
                 xfill True
@@ -258,31 +265,43 @@ screen dictionary_popup(entry, entry_key=None):
                     xfill True
                     yfill True
 
+                    # ---------- Back Button ----------
+                    imagebutton:
+                        idle "gui/dictionary/arrow_left.png"
+                        hover "gui/dictionary/arrow_left.png"
+                        at btn_interactive
+                        action NullAction()
+                        xalign 0.0
+                        yalign 0.5
+                        focus_mask True
+
+                    # ---------- Tooltip Toggle ----------
                     if entry_key and entry_key in _DICTIONARY:
 
                         $ _tooltip_enabled = bool(entry.get("tooltip_on", True))
                         $ _tooltip_icon = "gui/dictionary/check_square_color_checkmark.png" if _tooltip_enabled else "gui/dictionary/check_square_color.png"
 
-                        fixed:
+                        button:
+                            background Frame("gui/dictionary/button_square_line_white.png", 32, 32)
+                            at btn_interactive
                             xalign 1.0
-                            yalign 0.0
-                            xsize 220
-                            ysize 48
-                            xoffset -12
-                            yoffset -4
+                            yalign 0.5
+                            xsize 250
+                            ysize 56
+                            action Function(toggle_dictionary_tooltip_for_entry, entry_key)
 
-                            text "Tooltip":
-                                style "dictionary_toggle_label"
-                                xpos 0
-                                yalign 0.5
+                            fixed:
+                                xfill True
+                                yfill True
 
-                            imagebutton:
-                                idle _tooltip_icon
-                                hover _tooltip_icon
-                                at btn_zoom
-                                xpos 130
-                                yalign 0.5
-                                action Function(toggle_dictionary_tooltip_for_entry, entry_key)
+                                text "Tooltip":
+                                    style "dictionary_toggle_label"
+                                    xpos 22
+                                    yalign 0.5
+
+                                add _tooltip_icon:
+                                    xpos 182
+                                    yalign 0.5
 
             hbox:
                 style "dbg_hbox"
@@ -298,24 +317,24 @@ screen dictionary_popup(entry, entry_key=None):
                     if entry.get("en"):
                         text entry.get("en", "") style "dictionary_title_en":
                             xpos 0
-                            ypos 32
+                            ypos 0
 
                     if entry.get("ja"):
                         text entry.get("ja", "") style "jp_title":
                             xpos 0
-                            ypos 102
+                            ypos 96
 
                     if entry.get("examples"):
 
                         text "例文 / Examples:" style "dictionary_section":
                             xpos 0
-                            ypos 182
+                            ypos 192
 
                         frame:
                             background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
                             padding (20, 14)
                             xfill True
-                            ypos 228
+                            ypos 240
                             ysize 400
 
                             viewport id "examples_vp":
@@ -363,37 +382,26 @@ screen dictionary_popup(entry, entry_key=None):
                             color _pos_color
                             xalign 0.5
 
-                    if entry.get("image"):
+                    $ _image_file = entry.get("image", "")
+                    $ _image_path = "dict_images/%s" % _image_file if _image_file else ""
+                    $ _has_image = bool(_image_file) and renpy.loadable(_image_path)
+                    $ _display_image_path = _image_path if _has_image else "dict_images/question-mark.png"
 
-                        frame:
-                            style "dictionary_image_frame"
+                    frame:
+                        style "dictionary_image_frame"
+                        xalign 0.5
+
+                        fixed:
+                            xsize 300
+                            ysize 300
                             xalign 0.5
+                            yalign 0.5
 
-                            fixed:
-                                xsize 300
-                                ysize 300
-                                xalign 0.5
-                                yalign 0.5
-
-                                add Transform(
-                                    "dict_images/%s" % entry["image"],
-                                    fit="contain",
-                                    xysize=(300, 300)
-                                ) xalign 0.5 yalign 0.5
-
-                    else:
-
-                        frame:
-                            style "dictionary_image_frame"
-                            xalign 0.5
-
-                            has fixed:
-                                xsize 300
-                                ysize 170
-                                xalign 0.5
-                                yalign 0.5
-
-                            text "No Image" style "dictionary_text_en" xalign 0.5 yalign 0.5
+                            add Transform(
+                                _display_image_path,
+                                fit="contain",
+                                xysize=(300, 300)
+                            ) xalign 0.5 yalign 0.5
 
                     fixed:
                         xalign 0.5
@@ -412,11 +420,28 @@ screen dictionary_popup(entry, entry_key=None):
                                 action Play("voice", _audio_path)
                                 xalign 0.5
                                 yalign 0.5
+                                focus_mask True
 
                         else:
 
                             add "gui/dictionary/Icon_Small_Blank_AudioOff.png" at dictionary_audio_small:
                                 xalign 0.5
                                 yalign 0.5
+
+        # ---------- CLOSE BUTTON ----------
+        fixed:
+            xfill True
+            yfill True
+
+            imagebutton:
+                idle "gui/dictionary/XButton.png"
+                hover "gui/dictionary/XButton.png"
+                at btn_interactive
+                action [Stop("voice"), Hide("dictionary_popup")]
+                xalign 1.0
+                yalign 0.0
+                xoffset 52
+                yoffset -60
+                focus_mask True
 
     key "game_menu" action [Stop("voice"), Hide("dictionary_popup")]
