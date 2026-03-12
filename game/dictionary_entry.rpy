@@ -1,22 +1,14 @@
 # ============================================
 # dictionary_menu.rpy — Ren'Py 8.5 compatible
-# Smaller centered popup version:
+# Compact dictionary entry popup:
 # - Fixed popup size: 1250 x 800
 # - Centered on screen
-# - Definition section removed
-# - EN/JP main titles moved to left side above example box
-# - Titles stacked vertically:
-#     School
-#     学校
-# - Example section label changed to 例文 / Examples
-# - No furigana shown for Japanese text in this screen
-# - Example box enlarged
-# - Audio icon reduced in size
-# - Left column uses fixed positioning for tighter vertical control
-# - Placeholder back button added top-left
-# - Missing image falls back to dict_images/question-mark.png
-# - Tooltip button wrapped in white frame and fully clickable
-# - Close button renders above tooltip button
+# - No image section
+# - Top row: Back button (left), Tooltip toggle (right)
+# - Row 2: English word (left), Audio icon (right)
+# - Row 3: Japanese word (left), POS label (right)
+# - Bottom: Example sentence box fills remaining space
+# - No furigana shown in this screen
 # ============================================
 
 
@@ -107,20 +99,15 @@ init python:
     COL_SECTION = "#3abaf5"
     COL_POS_TAGBG = "#3e2244"
 
-    # Drop shadow color
     COL_TEXT_SHADOW = "#000000cc"
-
-    # Shadow definition
     TEXT_SHADOW = [(3, COL_TEXT_SHADOW, 2, 2)]
 
-    # ---------- Debug Layout Styles ----------
     style.dbg_vbox = Style(style.default)
     style.dbg_vbox.background = Null()
 
     style.dbg_hbox = Style(style.default)
     style.dbg_hbox.background = Null()
 
-    # ---------- Text Styles ----------
     style.jp_text = Style(style.default)
     style.jp_text.font = JP_FONT
     style.jp_text.size = 32
@@ -131,7 +118,7 @@ init python:
 
     style.jp_title = Style(style.default)
     style.jp_title.font = JP_FONT
-    style.jp_title.size = 70
+    style.jp_title.size = 52
     style.jp_title.color = COL_TITLE_JP
     style.jp_title.outlines = [
         (2, COL_TITLE_OUT, 0, 0),
@@ -147,7 +134,7 @@ init python:
     style.dictionary_section.outlines = TEXT_SHADOW
 
     style.dictionary_title_en = Style(style.default)
-    style.dictionary_title_en.size = 70
+    style.dictionary_title_en.size = 52
     style.dictionary_title_en.color = COL_TITLE_EN
     style.dictionary_title_en.outlines = [
         (2, COL_TITLE_OUT, 0, 0),
@@ -159,10 +146,9 @@ init python:
     style.dictionary_text_en.color = COL_TEXT_MUTED
     style.dictionary_text_en.outlines = TEXT_SHADOW
 
-    # POS label style
     style.dictionary_pos_text = Style(style.default)
     style.dictionary_pos_text.font = JP_FONT
-    style.dictionary_pos_text.size = 42
+    style.dictionary_pos_text.size = 38
     style.dictionary_pos_text.color = "#FFFFFF"
     style.dictionary_pos_text.ruby_style = None
     style.dictionary_pos_text.background = Frame(Solid(COL_POS_TAGBG), 8, 8)
@@ -170,27 +156,27 @@ init python:
     style.dictionary_pos_text.ypadding = 8
     style.dictionary_pos_text.outlines = TEXT_SHADOW
 
-    # Top bar label style
     style.dictionary_toggle_label = Style(style.default)
     style.dictionary_toggle_label.font = JP_FONT
     style.dictionary_toggle_label.size = 28
     style.dictionary_toggle_label.color = "#FFFFFF"
     style.dictionary_toggle_label.outlines = TEXT_SHADOW
 
-    # Panel frame (main container)
     style.dictionary_frame = Style(style.default)
     style.dictionary_frame.background = Frame("gui/dictionary/Box_Square.png", 32, 32)
     style.dictionary_frame.xpadding = 32
     style.dictionary_frame.ypadding = 32
 
-    # Image frame
-    style.dictionary_image_frame = Style(style.default)
-    style.dictionary_image_frame.background = Frame("gui/dictionary/button_square_line_white.png", 32, 32)
-    style.dictionary_image_frame.xpadding = 16
-    style.dictionary_image_frame.ypadding = 16
+    # ---------- Example Scrollbar Styles ----------
+    style.dictionary_vscrollbar = Style(style.vscrollbar)
+    style.dictionary_vscrollbar.xmaximum = 26
+    style.dictionary_vscrollbar.xminimum = 26
+    style.dictionary_vscrollbar.top_bar = Frame("gui/dictionary/slide_vertical.png", 0, 0)
+    style.dictionary_vscrollbar.bottom_bar = Frame("gui/dictionary/slide_vertical.png", 0, 0)
+    style.dictionary_vscrollbar.thumb = Frame("gui/dictionary/slide_grabber.png", 3, 3)
+    style.dictionary_vscrollbar.unscrollable = "hide"
 
 
-# ---------- Hover Zoom ----------
 transform btn_zoom:
     zoom 1.0
     on hover:
@@ -199,8 +185,6 @@ transform btn_zoom:
         ease 0.12 zoom 1.0
 
 
-# ---------- Hover + Click Animation ----------
-# Use `activate` instead of mousedown/mouseup so the click bounce works reliably on Ren'Py buttons.
 transform btn_interactive:
     zoom 1.0
     on hover:
@@ -212,20 +196,21 @@ transform btn_interactive:
         ease 0.08 zoom 1.08
 
 
-# ---------- Smaller Audio Icon ----------
 transform dictionary_audio_small:
-    zoom 0.72
+    zoom 0.5
 
 
-# ---------- Popup Animations ----------
 transform dictionary_popup_swipe_in:
     alpha 0.0
     yoffset 400
     easeout_quart 0.3 alpha 1.0 yoffset 0
 
 
-# ---------- Popup Screen ----------
 screen dictionary_popup(entry, entry_key=None):
+
+    # Disable mouse wheel advancing dialogue while this menu is open
+    key "mousedown_4" action NullAction()
+    key "mousedown_5" action NullAction()
 
     tag dictionary_popup
     modal True
@@ -244,191 +229,150 @@ screen dictionary_popup(entry, entry_key=None):
         xalign 0.5
         yalign 0.5
         yoffset -100
-        xsize 1250
-        ysize 800
+        xsize 900
+        ysize 700
 
         vbox:
             style "dbg_vbox"
-            spacing 16
+            spacing 18
             xfill True
             yfill True
 
-            # Top bar row
-            frame:
-                background Null()
+            # ---------- TOP ROW ----------
+            fixed:
                 xfill True
-                yminimum 52
-                ymaximum 52
-                padding (0, 0, 0, 0)
+                ysize 56
 
-                fixed:
-                    xfill True
-                    yfill True
+                imagebutton:
+                    idle "gui/dictionary/arrow_left.png"
+                    hover "gui/dictionary/arrow_left.png"
+                    at btn_interactive
+                    action [Hide("dictionary_popup"), Show("dictionary_list_screen")]
+                    xalign 0.0
+                    yalign 0.5
+                    focus_mask True
 
-                    # ---------- Back Button ----------
-                    imagebutton:
-                        idle "gui/dictionary/arrow_left.png"
-                        hover "gui/dictionary/arrow_left.png"
+                if entry_key and entry_key in _DICTIONARY:
+
+                    $ _tooltip_enabled = bool(entry.get("tooltip_on", True))
+                    $ _tooltip_icon = "gui/dictionary/check_square_color_checkmark.png" if _tooltip_enabled else "gui/dictionary/check_square_color.png"
+
+                    button:
+                        background Frame("gui/dictionary/button_square_line_white.png", 32, 32)
                         at btn_interactive
-                        action NullAction()
-                        xalign 0.0
+                        xalign 1.0
+                        yalign 0.5
+                        xsize 250
+                        ysize 56
+                        action Function(toggle_dictionary_tooltip_for_entry, entry_key)
+
+                        fixed:
+
+                            text "ヒント表示":
+                                style "dictionary_toggle_label"
+                                xpos 22
+                                yalign 0.5
+
+                            add _tooltip_icon:
+                                xpos 182
+                                yalign 0.5
+
+            # ---------- EN / AUDIO ----------
+            fixed:
+                xfill True
+                ysize 84
+
+                if entry.get("en"):
+                    text entry.get("en", "") style "dictionary_title_en":
+                        xpos 0
+                        yalign 0.5
+
+                $ _audio_file = entry.get("audio", "")
+                $ _audio_path = "dict_audio/%s" % _audio_file if _audio_file else ""
+                $ _has_audio = bool(_audio_file) and renpy.loadable(_audio_path)
+
+                if _has_audio:
+
+                    imagebutton:
+                        idle "gui/dictionary/Icon_Small_Blank_Audio.png"
+                        hover "gui/dictionary/Icon_Small_Blank_Audio.png"
+                        at btn_interactive, dictionary_audio_small
+                        action Play("voice", _audio_path)
+                        xalign 1.0
                         yalign 0.5
                         focus_mask True
 
-                    # ---------- Tooltip Toggle ----------
-                    if entry_key and entry_key in _DICTIONARY:
+                else:
 
-                        $ _tooltip_enabled = bool(entry.get("tooltip_on", True))
-                        $ _tooltip_icon = "gui/dictionary/check_square_color_checkmark.png" if _tooltip_enabled else "gui/dictionary/check_square_color.png"
+                    add "gui/dictionary/Icon_Small_Blank_AudioOff.png" at dictionary_audio_small:
+                        xalign 1.0
+                        yalign 0.5
 
-                        button:
-                            background Frame("gui/dictionary/button_square_line_white.png", 32, 32)
-                            at btn_interactive
-                            xalign 1.0
-                            yalign 0.5
-                            xsize 250
-                            ysize 56
-                            action Function(toggle_dictionary_tooltip_for_entry, entry_key)
 
-                            fixed:
-                                xfill True
-                                yfill True
+            # ---------- JP / POS ----------
+            fixed:
+                xfill True
+                ysize 64
 
-                                text "Tooltip":
-                                    style "dictionary_toggle_label"
-                                    xpos 22
-                                    yalign 0.5
+                if entry.get("ja"):
+                    text entry.get("ja", "") style "jp_title":
+                        xpos 0
+                        yalign 0.5
 
-                                add _tooltip_icon:
-                                    xpos 182
-                                    yalign 0.5
+                if entry.get("pos"):
 
-            hbox:
-                style "dbg_hbox"
-                spacing 8
+                    $ _pos_key = entry.get("pos", "").lower()
+                    $ _pos_label = POS_JA.get(_pos_key, _pos_key)
+                    $ _pos_color = POS_COLORS.get(_pos_key, "#FFFFFF")
+
+                    text "[_pos_label]":
+                        style "dictionary_pos_text"
+                        color _pos_color
+                        xalign 1.0
+                        yalign 0.5
+
+
+            text "例文 / Examples:" style "dictionary_section":
+                xalign 0.5
+
+
+            frame:
+                background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
+                padding (24, 18)
                 xfill True
                 yfill True
 
-                # ---------- LEFT COLUMN ----------
-                fixed:
-                    xmaximum 0.68
-                    yfill True
+                side "c r":
 
-                    if entry.get("en"):
-                        text entry.get("en", "") style "dictionary_title_en":
-                            xpos 0
-                            ypos 0
+                    viewport id "examples_vp":
+                        mousewheel True
+                        draggable True
+                        xfill True
+                        yfill True
 
-                    if entry.get("ja"):
-                        text entry.get("ja", "") style "jp_title":
-                            xpos 0
-                            ypos 96
+                        vbox:
+                            spacing 10
 
-                    if entry.get("examples"):
+                            for ex in entry.get("examples", []):
 
-                        text "例文 / Examples:" style "dictionary_section":
-                            xpos 0
-                            ypos 192
+                                frame:
+                                    background Null()
+                                    padding (10, 8)
 
-                        frame:
-                            background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
-                            padding (20, 14)
-                            xfill True
-                            ypos 240
-                            ysize 400
+                                    vbox:
+                                        spacing 4
 
-                            viewport id "examples_vp":
-                                mousewheel True
-                                draggable True
-                                scrollbars "vertical"
-                                side_yfill True
-                                xfill True
-                                yfill True
+                                        if ex.get("ja"):
+                                            text ex["ja"] style "jp_text"
 
-                                vbox:
-                                    spacing 10
+                                        if ex.get("en"):
+                                            text "{i}%s{/i}" % ex["en"] style "dictionary_text_en"
 
-                                    for ex in entry["examples"]:
+                    vbar:
+                        value YScrollValue("examples_vp")
+                        style "dictionary_vscrollbar"
 
-                                        frame:
-                                            background Null()
-                                            padding (10, 8)
 
-                                            vbox:
-                                                spacing 4
-
-                                                if ex.get("ja"):
-                                                    text ex["ja"] style "jp_text"
-
-                                                if ex.get("en"):
-                                                    text "{i}%s{/i}" % ex["en"] style "dictionary_text_en"
-
-                # ---------- RIGHT COLUMN ----------
-                vbox:
-                    style "dbg_vbox"
-                    spacing 14
-                    xmaximum 360
-                    yfill True
-                    xalign 0.5
-
-                    if entry.get("pos"):
-
-                        $ _pos_key = entry.get("pos", "").lower()
-                        $ _pos_label = POS_JA.get(_pos_key, _pos_key)
-                        $ _pos_color = POS_COLORS.get(_pos_key, "#FFFFFF")
-
-                        text "[_pos_label]":
-                            style "dictionary_pos_text"
-                            color _pos_color
-                            xalign 0.5
-
-                    $ _image_file = entry.get("image", "")
-                    $ _image_path = "dict_images/%s" % _image_file if _image_file else ""
-                    $ _has_image = bool(_image_file) and renpy.loadable(_image_path)
-                    $ _display_image_path = _image_path if _has_image else "dict_images/question-mark.png"
-
-                    frame:
-                        style "dictionary_image_frame"
-                        xalign 0.5
-
-                        fixed:
-                            xsize 300
-                            ysize 300
-                            xalign 0.5
-                            yalign 0.5
-
-                            add Transform(
-                                _display_image_path,
-                                fit="contain",
-                                xysize=(300, 300)
-                            ) xalign 0.5 yalign 0.5
-
-                    fixed:
-                        xalign 0.5
-                        ysize 64
-
-                        $ _audio_file = entry.get("audio", "")
-                        $ _audio_path = "dict_audio/%s" % _audio_file if _audio_file else ""
-                        $ _has_audio = bool(_audio_file) and renpy.loadable(_audio_path)
-
-                        if _has_audio:
-
-                            imagebutton:
-                                idle "gui/dictionary/Icon_Small_Blank_Audio.png"
-                                hover "gui/dictionary/Icon_Small_Blank_Audio.png"
-                                at btn_zoom, dictionary_audio_small
-                                action Play("voice", _audio_path)
-                                xalign 0.5
-                                yalign 0.5
-                                focus_mask True
-
-                        else:
-
-                            add "gui/dictionary/Icon_Small_Blank_AudioOff.png" at dictionary_audio_small:
-                                xalign 0.5
-                                yalign 0.5
-
-        # ---------- CLOSE BUTTON ----------
         fixed:
             xfill True
             yfill True

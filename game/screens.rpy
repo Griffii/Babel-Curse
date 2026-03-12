@@ -327,7 +327,7 @@ screen quick_menu():
                 imagebutton:
                     idle gui.quick_btn["history"]["idle"]
                     hover gui.quick_btn["history"]["hover"]
-                    action ShowMenu("dictionary_list")
+                    action Show("dictionary_list_screen")
                     focus_mask True
 
                 # AUTO TOGGLE (formerly "Skip")
@@ -527,9 +527,9 @@ screen main_menu_icon_button(label, action, icon_idle, icon_hover):
         background None
         xsize 500
         ysize 150
-        hovered [SetLocalVariable("_is_hover", True), Play("sound", "audio/ui/Wood_Block.ogg")]
+        hovered [SetLocalVariable("_is_hover", True), Play("sound", "audio/ui/menu_hover.ogg")]
         unhovered SetLocalVariable("_is_hover", False)
-        action [Play("sound", "audio/ui/Positive_Beep.ogg"), action]
+        action [Play("sound", "audio/ui/menu_click.ogg"), action]
 
         add ("gui/main_menu/button-hover.png" if _is_hover else "gui/main_menu/button.png"):
             xalign 0.5

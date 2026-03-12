@@ -10,7 +10,7 @@
       },
       {
         "en": "She worries about her little brother every day.",
-        "ja": "かのじょは毎日弟のことを心配しています。"
+        "ja": "彼女は毎日弟のことを心配しています。"
       }
     ],
     "image": "worry.png",
@@ -24,11 +24,11 @@
     "examples": [
       {
         "en": "I study English every night after dinner.",
-        "ja": "わたしは夕飯のあとに毎日勉強します。"
+        "ja": "私は夕飯のあとに毎日勉強します。"
       },
       {
         "en": "They studied together at the library.",
-        "ja": "かれらは図書館でいっしょに勉強しました。"
+        "ja": "彼らは図書館で一緒に勉強しました。"
       }
     ],
     "image": "study.png",
@@ -42,7 +42,7 @@
     "examples": [
       {
         "en": "He will probably come to the party.",
-        "ja": "かれは多分パーティーに来るでしょう。"
+        "ja": "彼は多分パーティーに来るでしょう。"
       },
       {
         "en": "It will probably rain tomorrow.",
@@ -60,11 +60,11 @@
     "examples": [
       {
         "en": "Sometimes I walk home from school.",
-        "ja": "時々わたしは学校から歩いて帰ります。"
+        "ja": "時々私は学校から歩いて帰ります。"
       },
       {
         "en": "He sometimes forgets his homework.",
-        "ja": "かれは時々宿題をわすれます。"
+        "ja": "彼は時々宿題をわすれます。"
       }
     ],
     "image": "sometimes.png",
@@ -82,7 +82,7 @@
       },
       {
         "en": "This shrine is famous for its big gate.",
-        "ja": "この神社は大きい鳥居でゆうめいです。"
+        "ja": "この神社は大きい鳥居で有名です。"
       }
     ],
     "image": "shrine.png",
@@ -114,11 +114,11 @@
     "examples": [
       {
         "en": "They pray for good luck at the shrine.",
-        "ja": "かれらは神社で幸運を祈ります。"
+        "ja": "彼らは神社で幸運を祈ります。"
       },
       {
         "en": "I prayed for my family’s health.",
-        "ja": "わたしは家族の健康を祈りました。"
+        "ja": "私は家族の健康を祈りました。"
       }
     ],
     "image": "pray.png",
@@ -136,12 +136,12 @@
       },
       {
         "en": "She chose a book to read.",
-        "ja": "かのじょは読む本を選びました。"
+        "ja": "彼女は読む本を選びました。"
       }
     ],
     "image": "choose.png",
     "audio": "choose.mp3",
-    "tooltip_on": true
+    "tooltip_on": false
   },
   "regular": {
     "en": "Regular",
@@ -150,11 +150,11 @@
     "examples": [
       {
         "en": "I ordered a regular coffee.",
-        "ja": "わたしは普通のコーヒーをたのみました。"
+        "ja": "私は普通のコーヒーをたのみました。"
       },
       {
         "en": "She follows her regular daily routine.",
-        "ja": "かのじょはいつもの日課を守っています。"
+        "ja": "彼女はいつもの日課を守っています。"
       }
     ],
     "image": "regular.png",
@@ -172,7 +172,7 @@
       },
       {
         "en": "She studied hard for her exams.",
-        "ja": "かのじょは試験のために一生懸命勉強しました。"
+        "ja": "彼女は試験のために一生懸命勉強しました。"
       }
     ],
     "image": "exams.png",
@@ -186,16 +186,16 @@
     "examples": [
       {
         "en": "I go to school by train.",
-        "ja": "わたしは電車で学校へ行きます。"
+        "ja": "私は電車で学校へ行きます。"
       },
       {
         "en": "Our school has a big library.",
-        "ja": "わたしたちの学校には大きな図書館があります。"
+        "ja": "私たちの学校には大きな図書館があります。"
       }
     ],
     "image": "school.png",
     "audio": "school.mp3",
-    "tooltip_on": false
+    "tooltip_on": true
   },
   "job": {
     "en": "Job",
@@ -204,11 +204,11 @@
     "examples": [
       {
         "en": "She got a new job last month.",
-        "ja": "かのじょは先月新しい仕事を始めました。"
+        "ja": "彼女は先月新しい仕事を始めました。"
       },
       {
         "en": "His job keeps him very busy.",
-        "ja": "かれは仕事でとても忙しいです。"
+        "ja": "彼は仕事でとても忙しいです。"
       }
     ],
     "image": "job.png",
@@ -240,11 +240,11 @@
     "examples": [
       {
         "en": "Everyone makes mistakes.",
-        "ja": "だれでも間違いをします。"
+        "ja": "誰でも間違いをします。"
       },
       {
         "en": "I learned from my mistakes.",
-        "ja": "わたしは間違いから学びました。"
+        "ja": "私は間違いから学びました。"
       }
     ],
     "image": "mistakes.png",
@@ -262,7 +262,7 @@
       },
       {
         "en": "It was tough, but we didn’t give up.",
-        "ja": "たいへんだったけど、わたしたちはあきらめませんでした。"
+        "ja": "たいへんだったけど、私たちはあきらめませんでした。"
       }
     ],
     "image": "tough.png",
@@ -276,7 +276,7 @@
     "examples": [
       {
         "en": "I want to learn more about Japanese culture.",
-        "ja": "わたしは日本の文化についてもっと知りたいです。"
+        "ja": "私は日本の文化についてもっと知りたいです。"
       },
       {
         "en": "Every country has its own culture.",
@@ -294,11 +294,11 @@
     "examples": [
       {
         "en": "I bought some extra snacks.",
-        "ja": "わたしは余分なおかしを少し買いました。"
+        "ja": "私は余分なおかしを少し買いました。"
       },
       {
         "en": "We need extra time to finish.",
-        "ja": "わたしたちは終えるために余分な時間がひつようです。"
+        "ja": "私たちは終えるために余分な時間がひつようです。"
       }
     ],
     "image": "extra.png",
@@ -312,7 +312,7 @@
     "examples": [
       {
         "en": "He finished all his duties before going home.",
-        "ja": "かれは家に帰る前にすべての義務を終えました。"
+        "ja": "彼は家に帰る前にすべての義務を終えました。"
       },
       {
         "en": "Duties can be tough but important.",
@@ -334,7 +334,7 @@
       },
       {
         "en": "She was glad to hear the good news.",
-        "ja": "かのじょはいい知らせを聞いて嬉しそうでした。"
+        "ja": "彼女はいい知らせを聞いて嬉しそうでした。"
       }
     ],
     "image": "glad.png",
@@ -348,7 +348,7 @@
     "examples": [
       {
         "en": "She is the president of the student council.",
-        "ja": "かのじょは生徒会の会長です。"
+        "ja": "彼女は生徒会の会長です。"
       },
       {
         "en": "The student council planned the school festival.",
@@ -366,11 +366,11 @@
     "examples": [
       {
         "en": "His grades improved this semester.",
-        "ja": "かれの成績は今学期よくなりました。"
+        "ja": "彼の成績は今学期よくなりました。"
       },
       {
         "en": "She studies hard to keep her grades up.",
-        "ja": "かのじょは成績を保つために努力しています。"
+        "ja": "彼女は成績を保つために努力しています。"
       }
     ],
     "image": "grades.png",
@@ -384,11 +384,11 @@
     "examples": [
       {
         "en": "We’re supposed to meet at 3 p.m.",
-        "ja": "わたしたちは午後3時に会うはずです。"
+        "ja": "私たちは午後3時に会うはずです。"
       },
       {
         "en": "He was supposed to finish his homework.",
-        "ja": "かれは宿題を終えるはずでした。"
+        "ja": "彼は宿題を終えるはずでした。"
       }
     ],
     "image": "supposed_to.png",
