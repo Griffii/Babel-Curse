@@ -31,16 +31,16 @@ init -1 python:
     # POS color map
     # --------------------------
     POS_COLORS = {
-        "noun": "#4CAF50",
-        "verb": "#2196F3",
-        "adjective": "#E91E63",
-        "adverb": "#9C27B0",
-        "pronoun": "#FF9800",
-        "preposition": "#009688",
-        "conjunction": "#3F51B5",
-        "interjection": "#F44336",
-        "determiner": "#795548",
-        "phrase": "#607D8B",
+        "noun": "#6FBF73",         # soft green
+        "verb": "#6FA8DC",         # soft blue
+        "adjective": "#E78AB0",    # soft rose
+        "adverb": "#B58BD4",       # soft lavender
+        "pronoun": "#F2A65A",      # warm amber
+        "preposition": "#6FB8B8",  # soft teal
+        "conjunction": "#7F8CE0",  # muted indigo
+        "interjection": "#E97C6F", # soft coral
+        "determiner": "#A1887F",   # muted brown
+        "phrase": "#8FA6B2",       # blue gray
     }
 
     DEFAULT_POS_COLOR = "#FFFFFF"

@@ -110,6 +110,8 @@ init python:
     LIST_COL_TEXT = "#ffffff"
 
     # ---------- Base/List Styles ----------
+    EN_FONT = "fonts/Poppins/Poppins-Medium.ttf"
+
     style.dictionary_list_frame = Style(style.default)
     style.dictionary_list_frame.background = Frame("gui/dictionary/Box_Square.png", 32, 32)
     style.dictionary_list_frame.xpadding = 36
@@ -122,14 +124,14 @@ init python:
     style.dictionary_list_title.outlines = [(3, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_search_text = Style(style.default)
-    style.dictionary_list_search_text.font = "DejaVuSans.ttf"
+    style.dictionary_list_search_text.font = EN_FONT
     style.dictionary_list_search_text.size = 24
     style.dictionary_list_search_text.color = "#000000"
     style.dictionary_list_search_text.outlines = []
     style.dictionary_list_search_text.yoffset = -1
 
     style.dictionary_list_search_placeholder = Style(style.default)
-    style.dictionary_list_search_placeholder.font = "DejaVuSans.ttf"
+    style.dictionary_list_search_placeholder.font = EN_FONT
     style.dictionary_list_search_placeholder.size = 24
     style.dictionary_list_search_placeholder.color = "#777777ff"
     style.dictionary_list_search_placeholder.outlines = [(0, "#1F1F1F", 0, 0)]
@@ -142,8 +144,8 @@ init python:
     style.dictionary_list_search_label.outlines = [(2, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_button_text = Style(style.default)
-    style.dictionary_list_button_text.font = "DejaVuSans.ttf"
-    style.dictionary_list_button_text.size = 22
+    style.dictionary_list_button_text.font = EN_FONT
+    style.dictionary_list_button_text.size = 28
     style.dictionary_list_button_text.color = LIST_COL_TEXT
     style.dictionary_list_button_text.outlines = [(1, "#1F1F1F", 0, 0)]
     style.dictionary_list_button_text.text_align = 0.5
@@ -156,7 +158,7 @@ init python:
     style.dictionary_list_empty_text.outlines = [(1, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_page_text = Style(style.default)
-    style.dictionary_list_page_text.font = "DejaVuSans.ttf"
+    style.dictionary_list_page_text.font = EN_FONT
     style.dictionary_list_page_text.size = 24
     style.dictionary_list_page_text.color = "#ffffff"
     style.dictionary_list_page_text.outlines = [(1, "#1F1F1F", 0, 0)]

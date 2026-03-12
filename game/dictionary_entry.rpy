@@ -335,7 +335,7 @@ screen dictionary_popup(entry, entry_key=None):
 
 
             frame:
-                background Frame("gui/dictionary/button_square_flat_blue.png", 32, 32)
+                background Frame("gui/dictionary/fancy_panel.png", 32, 32)
                 padding (24, 18)
                 xfill True
                 yfill True

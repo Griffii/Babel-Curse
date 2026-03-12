@@ -354,7 +354,7 @@
       }
     ],
     "audio": "grades.mp3",
-    "tooltip_on": true
+    "tooltip_on": false
   },
   "supposed to": {
     "en": "Supposed to",
