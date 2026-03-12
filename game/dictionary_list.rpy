@@ -119,7 +119,7 @@ init python:
     style.dictionary_list_title.font = JP_FONT
     style.dictionary_list_title.size = 42
     style.dictionary_list_title.color = "#ffe6b4"
-    style.dictionary_list_title.outlines = [(3, "#000000cc", 2, 2)]
+    style.dictionary_list_title.outlines = [(3, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_search_text = Style(style.default)
     style.dictionary_list_search_text.font = "DejaVuSans.ttf"
@@ -131,21 +131,21 @@ init python:
     style.dictionary_list_search_placeholder = Style(style.default)
     style.dictionary_list_search_placeholder.font = "DejaVuSans.ttf"
     style.dictionary_list_search_placeholder.size = 24
-    style.dictionary_list_search_placeholder.color = "#ffffff"
-    style.dictionary_list_search_placeholder.outlines = [(2, "#000000", 0, 0)]
+    style.dictionary_list_search_placeholder.color = "#777777ff"
+    style.dictionary_list_search_placeholder.outlines = [(0, "#1F1F1F", 0, 0)]
     style.dictionary_list_search_placeholder.yoffset = -1
 
     style.dictionary_list_search_label = Style(style.default)
     style.dictionary_list_search_label.font = JP_FONT
     style.dictionary_list_search_label.size = 24
     style.dictionary_list_search_label.color = "#ffffff"
-    style.dictionary_list_search_label.outlines = [(2, "#000000cc", 0, 0)]
+    style.dictionary_list_search_label.outlines = [(2, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_button_text = Style(style.default)
     style.dictionary_list_button_text.font = "DejaVuSans.ttf"
     style.dictionary_list_button_text.size = 22
     style.dictionary_list_button_text.color = LIST_COL_TEXT
-    style.dictionary_list_button_text.outlines = [(2, "#000000", 0, 0)]
+    style.dictionary_list_button_text.outlines = [(1, "#1F1F1F", 0, 0)]
     style.dictionary_list_button_text.text_align = 0.5
     style.dictionary_list_button_text.layout = "subtitle"
 
@@ -153,13 +153,13 @@ init python:
     style.dictionary_list_empty_text.font = JP_FONT
     style.dictionary_list_empty_text.size = 28
     style.dictionary_list_empty_text.color = "#CFD7DE"
-    style.dictionary_list_empty_text.outlines = [(2, "#000000cc", 0, 0)]
+    style.dictionary_list_empty_text.outlines = [(1, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_page_text = Style(style.default)
     style.dictionary_list_page_text.font = "DejaVuSans.ttf"
     style.dictionary_list_page_text.size = 24
     style.dictionary_list_page_text.color = "#ffffff"
-    style.dictionary_list_page_text.outlines = [(2, "#000000", 0, 0)]
+    style.dictionary_list_page_text.outlines = [(1, "#1F1F1F", 0, 0)]
 
     style.dictionary_list_page_current = Style(style.dictionary_list_page_text)
     style.dictionary_list_page_current.color = "#ffe6b4"
@@ -174,8 +174,8 @@ init python:
     style.dictionary_list_item_button = Style(style.button)
     style.dictionary_list_item_button.background = Frame("gui/dictionary/list_button.png", 24, 24)
     style.dictionary_list_item_button.hover_background = Frame("gui/dictionary/list_button.png", 24, 24)
-    style.dictionary_list_item_button.xpadding = 10
-    style.dictionary_list_item_button.ypadding = 8
+    style.dictionary_list_item_button.xpadding = 8
+    style.dictionary_list_item_button.ypadding = 10
 
     style.dictionary_list_page_button = Style(style.button)
     style.dictionary_list_page_button.background = Frame("gui/dictionary/button_square_line_white.png", 24, 24)

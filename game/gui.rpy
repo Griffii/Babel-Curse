@@ -49,10 +49,6 @@ define gui.insensitive_color = '#8888887f'
 define gui.muted_color = '#285100'
 define gui.hover_muted_color = '#3d7a00'
 
-## The colors used for dialogue and menu choice text.
-define gui.text_color = '#000000'
-define gui.interface_text_color = '#ffffff'
-
 
 ## Fonts and Font Sizes ########################################################
 

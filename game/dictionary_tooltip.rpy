@@ -41,4 +41,4 @@ screen dictionary_hover_tooltip():
                     font "fonts/NotoSansJP/NotoSansJP-Bold.ttf"
                     size 30
                     color "#FFFFFF"
-                    outlines [(2, "#000000cc", 0, 0)]
+                    outlines [(1, "#1F1F1F", 0, 0)]

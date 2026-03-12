@@ -9,8 +9,8 @@ init 20:
     ########################################
 
     style narrator_name is say_label:
-        color "#ffffff"
-        outlines [(0, "#ffffff", 0, 0)]
+        color "#E8F2FF"
+        outlines [(2, "#242424", 0, 0)]
 
 
     ########################################
@@ -18,8 +18,8 @@ init 20:
     ########################################
 
     style haruto_name is say_label:
-        color "#0084ff"
-        outlines [(0, "#0084ff", 0, 0)]
+        color "#6FB6FF"
+        outlines [(2, "#242424", 0, 0)]
 
 
     ########################################
@@ -27,5 +27,5 @@ init 20:
     ########################################
 
     style aiomi_name is say_label:
-        color "#444444"
-        outlines [(0, "#ffffff", 0, 0)]
+        color "#FF8FD6"
+        outlines [(2, "#242424", 0, 0)]

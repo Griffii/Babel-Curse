@@ -13,7 +13,6 @@
         "ja": "彼女は毎日弟のことを心配しています。"
       }
     ],
-    "image": "worry.png",
     "audio": "worry.mp3",
     "tooltip_on": true
   },
@@ -31,7 +30,6 @@
         "ja": "彼らは図書館で一緒に勉強しました。"
       }
     ],
-    "image": "study.png",
     "audio": "study.mp3",
     "tooltip_on": true
   },
@@ -49,7 +47,6 @@
         "ja": "明日は多分雨が降るでしょう。"
       }
     ],
-    "image": "probably.png",
     "audio": "probably.mp3",
     "tooltip_on": true
   },
@@ -67,7 +64,6 @@
         "ja": "彼は時々宿題をわすれます。"
       }
     ],
-    "image": "sometimes.png",
     "audio": "sometimes.mp3",
     "tooltip_on": true
   },
@@ -85,7 +81,6 @@
         "ja": "この神社は大きい鳥居で有名です。"
       }
     ],
-    "image": "shrine.png",
     "audio": "shrine.mp3",
     "tooltip_on": true
   },
@@ -103,7 +98,6 @@
         "ja": "神主が参拝者にお祓いをしました。"
       }
     ],
-    "image": "priest.png",
     "audio": "priest.mp3",
     "tooltip_on": true
   },
@@ -121,7 +115,6 @@
         "ja": "私は家族の健康を祈りました。"
       }
     ],
-    "image": "pray.png",
     "audio": "pray.mp3",
     "tooltip_on": true
   },
@@ -139,9 +132,8 @@
         "ja": "彼女は読む本を選びました。"
       }
     ],
-    "image": "choose.png",
     "audio": "choose.mp3",
-    "tooltip_on": false
+    "tooltip_on": true
   },
   "regular": {
     "en": "Regular",
@@ -157,7 +149,6 @@
         "ja": "彼女はいつもの日課を守っています。"
       }
     ],
-    "image": "regular.png",
     "audio": "regular.mp3",
     "tooltip_on": true
   },
@@ -175,7 +166,6 @@
         "ja": "彼女は試験のために一生懸命勉強しました。"
       }
     ],
-    "image": "exams.png",
     "audio": "exams.mp3",
     "tooltip_on": true
   },
@@ -193,7 +183,6 @@
         "ja": "私たちの学校には大きな図書館があります。"
       }
     ],
-    "image": "school.png",
     "audio": "school.mp3",
     "tooltip_on": true
   },
@@ -211,7 +200,6 @@
         "ja": "彼は仕事でとても忙しいです。"
       }
     ],
-    "image": "job.png",
     "audio": "job.mp3",
     "tooltip_on": true
   },
@@ -229,7 +217,6 @@
         "ja": "自分のことを大切にしてね。"
       }
     ],
-    "image": "yourself.png",
     "audio": "yourself.mp3",
     "tooltip_on": true
   },
@@ -247,7 +234,6 @@
         "ja": "私は間違いから学びました。"
       }
     ],
-    "image": "mistakes.png",
     "audio": "mistakes.mp3",
     "tooltip_on": true
   },
@@ -265,7 +251,6 @@
         "ja": "たいへんだったけど、私たちはあきらめませんでした。"
       }
     ],
-    "image": "tough.png",
     "audio": "tough.mp3",
     "tooltip_on": true
   },
@@ -283,7 +268,6 @@
         "ja": "どの国にもその国ならではの文化があります。"
       }
     ],
-    "image": "culture.png",
     "audio": "culture.mp3",
     "tooltip_on": true
   },
@@ -301,7 +285,6 @@
         "ja": "私たちは終えるために余分な時間がひつようです。"
       }
     ],
-    "image": "extra.png",
     "audio": "extra.mp3",
     "tooltip_on": true
   },
@@ -319,7 +302,6 @@
         "ja": "義務はたいへんでも大切です。"
       }
     ],
-    "image": "duties.png",
     "audio": "duties.mp3",
     "tooltip_on": true
   },
@@ -337,7 +319,6 @@
         "ja": "彼女はいい知らせを聞いて嬉しそうでした。"
       }
     ],
-    "image": "glad.png",
     "audio": "glad.mp3",
     "tooltip_on": true
   },
@@ -355,7 +336,6 @@
         "ja": "生徒会が文化祭を計画しました。"
       }
     ],
-    "image": "student_council.png",
     "audio": "student_council.mp3",
     "tooltip_on": true
   },
@@ -373,7 +353,6 @@
         "ja": "彼女は成績を保つために努力しています。"
       }
     ],
-    "image": "grades.png",
     "audio": "grades.mp3",
     "tooltip_on": true
   },
@@ -391,7 +370,6 @@
         "ja": "彼は宿題を終えるはずでした。"
       }
     ],
-    "image": "supposed_to.png",
     "audio": "supposed_to.mp3",
     "tooltip_on": true
   }

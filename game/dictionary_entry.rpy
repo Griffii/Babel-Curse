@@ -93,14 +93,14 @@ init python:
     COL_BG_PANEL = "#14161aF0"
     COL_TEXT_MAIN = "#ffffff"
     COL_TEXT_MUTED = "#CFD7DE"
-    COL_TITLE_EN = "#ffe6b4"
-    COL_TITLE_JP = "#ffe6b4"
-    COL_TITLE_OUT = "#000000d0"
+    COL_TITLE_EN = "#FFB347"
+    COL_TITLE_JP = "#FFB347"
+    COL_TITLE_OUT = "#1F1F1F"
     COL_SECTION = "#3abaf5"
     COL_POS_TAGBG = "#3e2244"
 
-    COL_TEXT_SHADOW = "#000000cc"
-    TEXT_SHADOW = [(3, COL_TEXT_SHADOW, 2, 2)]
+    COL_TEXT_OUTLINE = "#1F1F1F"
+    TEXT_OUTLINE = [(2, COL_TEXT_OUTLINE, 0, 0)]
 
     style.dbg_vbox = Style(style.default)
     style.dbg_vbox.background = Null()
@@ -114,15 +114,14 @@ init python:
     style.jp_text.color = COL_TEXT_MAIN
     style.jp_text.line_spacing = 2
     style.jp_text.ruby_style = None
-    style.jp_text.outlines = TEXT_SHADOW
+    style.jp_text.outlines = TEXT_OUTLINE
 
     style.jp_title = Style(style.default)
     style.jp_title.font = JP_FONT
     style.jp_title.size = 52
     style.jp_title.color = COL_TITLE_JP
     style.jp_title.outlines = [
-        (2, COL_TITLE_OUT, 0, 0),
-        (1, COL_TEXT_SHADOW, 2, 2)
+        (3, COL_TITLE_OUT, 0, 0)
     ]
     style.jp_title.ruby_style = None
 
@@ -131,20 +130,19 @@ init python:
     style.dictionary_section.size = 32
     style.dictionary_section.color = COL_SECTION
     style.dictionary_section.ruby_style = None
-    style.dictionary_section.outlines = TEXT_SHADOW
+    style.dictionary_section.outlines = TEXT_OUTLINE
 
     style.dictionary_title_en = Style(style.default)
     style.dictionary_title_en.size = 52
     style.dictionary_title_en.color = COL_TITLE_EN
     style.dictionary_title_en.outlines = [
-        (2, COL_TITLE_OUT, 0, 0),
-        (1, COL_TEXT_SHADOW, 2, 2)
+        (3, COL_TITLE_OUT, 0, 0)
     ]
 
     style.dictionary_text_en = Style(style.default)
     style.dictionary_text_en.size = 32
     style.dictionary_text_en.color = COL_TEXT_MUTED
-    style.dictionary_text_en.outlines = TEXT_SHADOW
+    style.dictionary_text_en.outlines = TEXT_OUTLINE
 
     style.dictionary_pos_text = Style(style.default)
     style.dictionary_pos_text.font = JP_FONT
@@ -154,13 +152,13 @@ init python:
     style.dictionary_pos_text.background = Frame(Solid(COL_POS_TAGBG), 8, 8)
     style.dictionary_pos_text.xpadding = 14
     style.dictionary_pos_text.ypadding = 8
-    style.dictionary_pos_text.outlines = TEXT_SHADOW
+    style.dictionary_pos_text.outlines = TEXT_OUTLINE
 
     style.dictionary_toggle_label = Style(style.default)
     style.dictionary_toggle_label.font = JP_FONT
     style.dictionary_toggle_label.size = 28
     style.dictionary_toggle_label.color = "#FFFFFF"
-    style.dictionary_toggle_label.outlines = TEXT_SHADOW
+    style.dictionary_toggle_label.outlines = TEXT_OUTLINE
 
     style.dictionary_frame = Style(style.default)
     style.dictionary_frame.background = Frame("gui/dictionary/Box_Square.png", 32, 32)
