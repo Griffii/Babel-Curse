@@ -366,3 +366,39 @@ init -10 python:
         dictionary_hyperlink_clicked,
         dictionary_hyperlink_focus,
     )
+
+
+# ============================================
+# Dictionary overlay button
+# ============================================
+
+init -5 python:
+    if "dictionary_open_button" not in config.overlay_screens:
+        config.overlay_screens.append("dictionary_open_button")
+
+
+screen dictionary_open_button():
+
+    if not main_menu:
+
+        zorder 200
+
+        imagebutton:
+
+            idle Transform(
+                "gui/dictionary/dictionary-icon.png",
+                size=(128, 128),
+                alpha=0.45
+            )
+
+            hover Transform(
+                "gui/dictionary/dictionary-icon.png",
+                size=(128, 128),
+                alpha=1.0
+            )
+
+            xpos 30
+            ypos 30
+
+            focus_mask True
+            action Show("dictionary_list_screen")
